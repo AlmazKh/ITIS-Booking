@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#2A1771</color>
+    <color name="colorAccent">#11B8CB</color>
+    <color name="colorAccentSecondary">#D40040</color>
+    <color name="colorBaseFont">#000000</color>
+    <color name="colorCabinetStatusFree">#64B73D</color>
+    <color name="colorCabinetStatusBooked">#E0822C</color>
+</resources>
