@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ITIS-Booking</string>
+    <string name="bookings_page_title">Бронирования</string>
+    <string name="timetable_page_title">Расписание</string>
+    <string name="map_page_title">Карта</string>
+    <string name="notification_page_title">Уведомления</string>
+    <string name="profile_page_title">Профиль</string>
 </resources>

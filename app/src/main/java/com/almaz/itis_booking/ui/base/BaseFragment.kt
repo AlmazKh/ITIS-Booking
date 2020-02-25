@@ -5,12 +5,11 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.almaz.itis_booking.ui.main.MainActivity
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 
-class BaseFragment : Fragment() {
+open class BaseFragment : Fragment() {
     lateinit var rootActivity: MainActivity
-
-
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -31,12 +30,12 @@ class BaseFragment : Fragment() {
     }
 
     fun setToolbarTitle(title: String) {
-//        rootActivity.toolbar.tv_toolbar_title.text = title
+        rootActivity.toolbar.tv_toolbar_title.text = title
     }
 
     fun setToolbarAndBottomNavVisibility(toolbarVisibility: Int, bottomNavVisibility: Int) {
-        /*rootActivity.toolbar.visibility = toolbarVisibility
-        rootActivity.bottom_navigation.visibility = bottomNavVisibility*/
+        rootActivity.toolbar.visibility = toolbarVisibility
+        rootActivity.navigation.visibility = bottomNavVisibility
     }
 
     fun showSnackbar(message: String){

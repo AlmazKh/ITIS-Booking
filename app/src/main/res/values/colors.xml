@@ -4,7 +4,8 @@
     <color name="colorPrimaryDark">#2A1771</color>
     <color name="colorAccent">#11B8CB</color>
     <color name="colorAccentSecondary">#D40040</color>
-    <color name="colorBaseFont">#000000</color>
+    <color name="colorBaseText">#000000</color>
+    <color name="colorSecondaryText">#6E7174</color>
     <color name="colorCabinetStatusFree">#64B73D</color>
     <color name="colorCabinetStatusBooked">#E0822C</color>
 </resources>
