@@ -1,15 +1,16 @@
 package com.almaz.itis_booking.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.almaz.itis_booking.App
 import com.almaz.itis_booking.R
 import com.almaz.itis_booking.ui.base.BaseActivity
+import com.almaz.itis_booking.ui.bookings.BookingsListFragment
+import com.almaz.itis_booking.ui.map.MapFragment
+import com.almaz.itis_booking.ui.notification.NotificationsListFragment
+import com.almaz.itis_booking.ui.profile.ProfileFragment
+import com.almaz.itis_booking.ui.timetable.TimetableFragment
 import com.almaz.itis_booking.utils.ViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -40,10 +41,21 @@ class MainActivity : BaseActivity() {
     private val onNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener { item ->
                 when (item.itemId) {
-                    /*R.id.nav_profile -> {
-                        navigateTo(MyProfileFragment.toString(), null)
+                    R.id.navigation_map -> {
+                        navigateTo(MapFragment.toString(), null)
                     }
-                    ...*/
+                    R.id.navigation_bookings -> {
+                        navigateTo(BookingsListFragment.toString(), null)
+                    }
+                    R.id.navigation_timetable -> {
+                        navigateTo(TimetableFragment.toString(), null)
+                    }
+                    R.id.navigation_notification -> {
+                        navigateTo(NotificationsListFragment.toString(), null)
+                    }
+                    R.id.navigation_profile -> {
+                        navigateTo(ProfileFragment.toString(), null)
+                    }
                     else -> {
                         return@OnNavigationItemSelectedListener false
                     }
@@ -52,15 +64,38 @@ class MainActivity : BaseActivity() {
             }
 
     fun navigateTo(fragment: String, arguments: Bundle?) {
-        val transaction =
-                supportFragmentManager.beginTransaction()
+        val transaction = supportFragmentManager.beginTransaction()
         when (fragment) {
-            /*LoginFragment.toString() -> {
+            MapFragment.toString() -> {
                 transaction.replace(
-                    R.id.main_container,
-                    LoginFragment.newInstance()
+                        R.id.main_container,
+                        MapFragment.newInstance()
                 )
-            }*/
+            }
+            BookingsListFragment.toString() -> {
+                transaction.replace(
+                        R.id.main_container,
+                        BookingsListFragment.newInstance()
+                )
+            }
+            TimetableFragment.toString() -> {
+                transaction.replace(
+                        R.id.main_container,
+                        TimetableFragment.newInstance()
+                )
+            }
+            NotificationsListFragment.toString() -> {
+                transaction.replace(
+                        R.id.main_container,
+                        NotificationsListFragment.newInstance()
+                )
+            }
+            ProfileFragment.toString() -> {
+                transaction.replace(
+                        R.id.main_container,
+                        ProfileFragment.newInstance()
+                )
+            }
         }
         transaction.addToBackStack(null)
         transaction.commit()
@@ -92,12 +127,21 @@ class MainActivity : BaseActivity() {
 
     private fun setBottomNavSelectedItem(fragment: Fragment?) {
         when (fragment) {
-            /*is MyProfileFragment -> {
-                bottom_navigation.selectedItemId = R.id.nav_profile
+            is MapFragment -> {
+                navigation.selectedItemId = R.id.navigation_map
             }
-            is PeopleFragment -> {
-                bottom_navigation.selectedItemId = R.id.nav_people
-            }*/
+            is BookingsListFragment -> {
+                navigation.selectedItemId = R.id.navigation_bookings
+            }
+            is TimetableFragment -> {
+                navigation.selectedItemId = R.id.navigation_timetable
+            }
+            is NotificationsListFragment -> {
+                navigation.selectedItemId = R.id.navigation_notification
+            }
+            is ProfileFragment -> {
+                navigation.selectedItemId = R.id.navigation_profile
+            }
         }
     }
 }
