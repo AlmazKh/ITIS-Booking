@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "7558764920",
+    "firebase_url": "https://itis-booking.firebaseio.com",
+    "project_id": "itis-booking",
+    "storage_bucket": "itis-booking.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:7558764920:android:afcad40552902df6e3d08d",
+        "android_client_info": {
+          "package_name": "com.almaz.itis_booking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "7558764920-jo1n9bblv3or99lejpafrd2s47jjmrfd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.almaz.itis_booking",
+            "certificate_hash": "c914fcd12afc6460a7e3e6a385e6a9deebb7df75"
+          }
+        },
+        {
+          "client_id": "7558764920-bgtfjlqlmpnb4sqgm4b8coght3q7qjba.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbkLZItqGkP20c5GLz-sw3sRxxDIKd5Hw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "7558764920-bgtfjlqlmpnb4sqgm4b8coght3q7qjba.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

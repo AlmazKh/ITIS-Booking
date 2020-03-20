@@ -1,12 +1,16 @@
 package com.almaz.itis_booking.ui.main
 
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.almaz.itis_booking.App
 import com.almaz.itis_booking.R
 import com.almaz.itis_booking.ui.base.BaseActivity
 import com.almaz.itis_booking.ui.bookings.BookingsListFragment
+import com.almaz.itis_booking.ui.login.LoginFragment
 import com.almaz.itis_booking.ui.map.MapFragment
 import com.almaz.itis_booking.ui.notification.NotificationsListFragment
 import com.almaz.itis_booking.ui.profile.ProfileFragment
@@ -36,7 +40,22 @@ class MainActivity : BaseActivity() {
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         viewModel = ViewModelProvider(this, this.viewModeFactory)
                 .get(MainViewModel::class.java)
+
+        viewModel.checkAuthUser()
+        observeIsLoginedLiveData()
     }
+
+    private fun observeIsLoginedLiveData() =
+        viewModel.isLoginedLiveData.observe(this, Observer { response ->
+            if (response.data != null) {
+                if (response.data) {
+                    navigation.selectedItemId = R.id.navigation_timetable
+                    navigateTo(TimetableFragment.toString(), null)
+                } else {
+                    navigateTo(LoginFragment.toString(), null)
+                }
+            }
+        })
 
     private val onNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -96,6 +115,12 @@ class MainActivity : BaseActivity() {
                         ProfileFragment.newInstance()
                 )
             }
+            LoginFragment.toString() -> {
+                transaction.replace(
+                    R.id.main_container,
+                    LoginFragment.newInstance()
+                )
+            }
         }
         transaction.addToBackStack(null)
         transaction.commit()
@@ -142,6 +167,19 @@ class MainActivity : BaseActivity() {
             is ProfileFragment -> {
                 navigation.selectedItemId = R.id.navigation_profile
             }
+        }
+    }
+
+    fun showLoading(show: Boolean) {
+        if (show) {
+            pb_main.visibility = View.VISIBLE
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+            )
+        } else {
+            pb_main.visibility = View.GONE
+            window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         }
     }
 }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/iv_app_start_logo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/spacing_normal_16"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="@dimen/spacing_normal_16"
+        android:layout_marginBottom="300dp"
+        android:src="@drawable/logo_start_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/description_login_page_itis_booking" />
+
+    <Button
+        android:id="@+id/btn_login_by_google"
+        android:layout_width="280dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="@dimen/spacing_normal_16"
+        android:layout_marginTop="@dimen/spacing_normal_16"
+        android:layout_marginEnd="@dimen/spacing_normal_16"
+        android:background="@drawable/google_sign_in_btn"
+        android:fontFamily="@font/roboto"
+        android:text="@string/btn_text_enter_by_google"
+        android:textAlignment="center"
+        android:textColor="@color/colorBaseText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_app_start_logo" />
+</androidx.constraintlayout.widget.ConstraintLayout>

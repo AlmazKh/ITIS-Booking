@@ -5,4 +5,11 @@
     <string name="map_page_title">Карта</string>
     <string name="notification_page_title">Уведомления</string>
     <string name="profile_page_title">Профиль</string>
+
+    <string name="web_client_id">7558764920-bgtfjlqlmpnb4sqgm4b8coght3q7qjba.apps.googleusercontent.com</string>
+
+    <string name="snackbar_error_message">Произошла ошибка</string>
+
+    <string name="btn_text_enter_by_google">Sign in with Google</string>
+    <string name="description_login_page_itis_booking">Login page ITIS-Booking</string>
 </resources>

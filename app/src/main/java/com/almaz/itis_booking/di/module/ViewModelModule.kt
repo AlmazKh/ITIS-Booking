@@ -1,6 +1,7 @@
 package com.almaz.itis_booking.di.module
 
 import androidx.lifecycle.ViewModel
+import com.almaz.itis_booking.ui.login.LoginViewModel
 import com.almaz.itis_booking.ui.main.MainViewModel
 import dagger.Binds
 import dagger.MapKey
@@ -10,6 +11,12 @@ import kotlin.reflect.KClass
 
 @Module
 abstract class ViewModelModule {
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(LoginViewModel::class)
+    abstract fun bindLoginViewModel(loginViewModel: LoginViewModel): ViewModel
+
     @Binds
     @IntoMap
     @ViewModelKey(MainViewModel::class)

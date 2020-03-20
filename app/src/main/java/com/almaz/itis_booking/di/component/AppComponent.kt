@@ -1,11 +1,9 @@
 package com.almaz.itis_booking.di.component
 
-import androidx.appcompat.app.AppCompatActivity
 import com.almaz.itis_booking.di.module.AppModule
+import com.almaz.itis_booking.di.module.RepoModule
 import com.almaz.itis_booking.di.module.ViewModelFactoryModule
 import com.almaz.itis_booking.di.module.ViewModelModule
-import com.almaz.itis_booking.ui.main.MainActivity
-import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
@@ -14,9 +12,11 @@ import javax.inject.Singleton
     modules = [
         AppModule::class,
         ViewModelModule::class,
-        ViewModelFactoryModule::class
+        ViewModelFactoryModule::class,
+        RepoModule::class
     ]
 )
 interface AppComponent {
     fun mainComponent(): MainComponent.Builder
+    fun authComponent(): AuthComponent.Builder
 }

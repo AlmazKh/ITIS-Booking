@@ -4,5 +4,11 @@ import dagger.Module
 
 @Module
 class MainModule {
+//
+//    @ScreenScope
+//    @Provides
+//    fun provideMainViewModel(loginInteractor: LoginInteractor): MainViewModel {
+//        return MainViewModel(loginInteractor)
+//    }
 
 }
