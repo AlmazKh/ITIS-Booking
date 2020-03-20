@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.almaz.itis_booking.App
 import com.almaz.itis_booking.R
 import com.almaz.itis_booking.ui.base.BaseFragment
+import com.almaz.itis_booking.ui.login.LoginViewModel.Companion.RC_SIGN_IN
 import com.almaz.itis_booking.ui.profile.ProfileFragment
 import com.almaz.itis_booking.utils.LoginState
 import com.almaz.itis_booking.utils.ScreenState
@@ -54,11 +56,23 @@ class LoginFragment : BaseFragment() {
 
         viewModel = ViewModelProvider(this, this.viewModeFactory)
             .get(LoginViewModel::class.java)
-        viewModel.loginState.observe(::getLifecycle, ::updateUI)
 
         view.btn_login_by_google.setOnClickListener {
-            viewModel.onGoogleSignInClick(googleSignInClient, activity as AppCompatActivity)
+            onGoogleSignInClick()
         }
+
+        observeLoginState()
+    }
+
+    private fun onGoogleSignInClick() {
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
+
+    private fun observeLoginState() {
+        viewModel.loginState.observe(viewLifecycleOwner, Observer {
+            it?.let { screenState -> updateUI(screenState) }
+        })
     }
 
     private fun updateUI(screenState: ScreenState<LoginState>?) {

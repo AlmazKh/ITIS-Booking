@@ -2,7 +2,6 @@ package com.almaz.itis_booking.ui.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.almaz.itis_booking.core.interactors.LoginInteractor
 import com.almaz.itis_booking.ui.base.BaseViewModel
@@ -20,27 +19,19 @@ import javax.inject.Inject
 class LoginViewModel
 @Inject constructor(
     private val loginInteractor: LoginInteractor
-) : BaseViewModel(), GoogleApiClient.OnConnectionFailedListener {
+) : BaseViewModel() {
 
-    val loginState: LiveData<ScreenState<LoginState>>
-        get() = mLoginState
-
-    private val mLoginState: MutableLiveData<ScreenState<LoginState>> = MutableLiveData()
-
-    fun onGoogleSignInClick(googleSignInClient: GoogleSignInClient, activity: AppCompatActivity) {
-        val signInIntent = googleSignInClient.signInIntent
-        activity.startActivityForResult(signInIntent, RC_SIGN_IN)
-    }
+    val loginState = MutableLiveData<ScreenState<LoginState>>()
 
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
-        mLoginState.value = ScreenState.Loading
+        loginState.value = ScreenState.Loading
         disposables.add(
             loginInteractor.loginWithGoogle(acct)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    mLoginState.value = ScreenState.Render(LoginState.SUCCESS_LOGIN)
+                    loginState.value = ScreenState.Render(LoginState.SUCCESS_LOGIN)
                 }, {
-                    mLoginState.value = ScreenState.Render(LoginState.ERROR)
+                    loginState.value = ScreenState.Render(LoginState.ERROR)
                     it.printStackTrace()
                 })
         )
@@ -57,10 +48,6 @@ class LoginViewModel
                 // ...
             }
         }
-    }
-
-    override fun onConnectionFailed(result: ConnectionResult) {
-        mLoginState.value = ScreenState.Render(LoginState.ERROR)
     }
 
     companion object {
