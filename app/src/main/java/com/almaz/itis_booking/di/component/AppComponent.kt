@@ -19,4 +19,5 @@ import javax.inject.Singleton
 interface AppComponent {
     fun mainComponent(): MainComponent.Builder
     fun authComponent(): AuthComponent.Builder
+    fun mapComponent(): MapComponent.Builder
 }
