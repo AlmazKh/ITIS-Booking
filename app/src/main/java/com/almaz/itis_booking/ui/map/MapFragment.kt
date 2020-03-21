@@ -5,13 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager2.widget.ViewPager2
 import com.almaz.itis_booking.App
 import com.almaz.itis_booking.R
 import com.almaz.itis_booking.ui.base.BaseFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_map.*
-import javax.inject.Inject
 
 class MapFragment : BaseFragment() {
 
@@ -34,9 +32,14 @@ class MapFragment : BaseFragment() {
         mapViewPagerAdapter = MapViewPagerAdapter(this)
         vp_map.adapter = mapViewPagerAdapter
 
-        TabLayoutMediator(tabs_floor, vp_map) { tab, position ->
-            tab.text = "${(position + 13)}"
-        }.attach()
+        TabLayoutMediator(tabs_floor, vp_map,
+                TabLayoutMediator.TabConfigurationStrategy { tab, position ->
+                    when(position) {
+                        0 -> tab.text = "13"
+                        1 -> tab.text = "14"
+                        2 -> tab.text = "15"
+                    }
+                }).attach()
     }
 
     companion object {

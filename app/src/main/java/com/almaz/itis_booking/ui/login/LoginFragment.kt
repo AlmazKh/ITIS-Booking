@@ -2,7 +2,6 @@ package com.almaz.itis_booking.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,8 +49,8 @@ class LoginFragment : BaseFragment() {
 
     private fun init(view: View) {
         setToolbarAndBottomNavVisibility(
-            toolbarVisibility = View.GONE,
-            bottomNavVisibility = View.GONE
+                toolbarVisibility = View.GONE,
+                bottomNavVisibility = View.GONE
         )
 
         viewModel = ViewModelProvider(this, this.viewModeFactory)
