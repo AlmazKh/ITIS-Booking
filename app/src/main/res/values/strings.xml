@@ -12,4 +12,5 @@
 
     <string name="btn_text_enter_by_google">Sign in with Google</string>
     <string name="description_login_page_itis_booking">Login page ITIS-Booking</string>
+    <string name="filter_item_btn_title">filter button</string>
 </resources>

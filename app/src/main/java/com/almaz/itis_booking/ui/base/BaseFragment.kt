@@ -30,7 +30,7 @@ open class BaseFragment : Fragment() {
     }
 
     fun setToolbarTitle(title: String) {
-        rootActivity.toolbar.tv_toolbar_title.text = title
+        rootActivity.toolbar.title = title
     }
 
     fun setToolbarAndBottomNavVisibility(toolbarVisibility: Int, bottomNavVisibility: Int) {

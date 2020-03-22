@@ -1,9 +1,7 @@
 package com.almaz.itis_booking.ui.map
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import com.almaz.itis_booking.App
 import com.almaz.itis_booking.R
@@ -25,7 +23,9 @@ class MapFragment : BaseFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_map, container, false)
+        val v = inflater.inflate(R.layout.fragment_map, container, false)
+        setHasOptionsMenu(true)
+        return v
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,6 +40,21 @@ class MapFragment : BaseFragment() {
                         2 -> tab.text = "15"
                     }
                 }).attach()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.with_filter_toolbar, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.filter -> {
+                showSnackbar("U go to filter SUCCESS")
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     companion object {
