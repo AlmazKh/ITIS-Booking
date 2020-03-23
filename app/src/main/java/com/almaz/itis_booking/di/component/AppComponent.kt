@@ -20,4 +20,5 @@ interface AppComponent {
     fun mainComponent(): MainComponent.Builder
     fun authComponent(): AuthComponent.Builder
     fun mapComponent(): MapComponent.Builder
+    fun timetableComponent(): TimetableComponent.Builder
 }

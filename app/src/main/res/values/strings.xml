@@ -13,4 +13,6 @@
     <string name="btn_text_enter_by_google">Sign in with Google</string>
     <string name="description_login_page_itis_booking">Login page ITIS-Booking</string>
     <string name="filter_item_btn_title">filter button</string>
+    <string name="default_cabinet_numbet">1301</string>
+    <string name="cabinet_capacity_title">Вместимость:</string>
 </resources>

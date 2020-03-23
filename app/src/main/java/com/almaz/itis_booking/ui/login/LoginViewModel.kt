@@ -1,7 +1,6 @@
 package com.almaz.itis_booking.ui.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import com.almaz.itis_booking.core.interactors.LoginInteractor
 import com.almaz.itis_booking.ui.base.BaseViewModel
@@ -9,10 +8,7 @@ import com.almaz.itis_booking.utils.LoginState
 import com.almaz.itis_booking.utils.ScreenState
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.common.api.GoogleApiClient
 import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
