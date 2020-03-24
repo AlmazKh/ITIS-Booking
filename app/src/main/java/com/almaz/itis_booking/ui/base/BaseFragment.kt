@@ -35,7 +35,7 @@ open class BaseFragment : Fragment() {
 
     fun setToolbarAndBottomNavVisibility(toolbarVisibility: Int, bottomNavVisibility: Int) {
         rootActivity.toolbar.visibility = toolbarVisibility
-        rootActivity.navigation.visibility = bottomNavVisibility
+        rootActivity.bottom_nav.visibility = bottomNavVisibility
     }
 
     fun showSnackbar(message: String){

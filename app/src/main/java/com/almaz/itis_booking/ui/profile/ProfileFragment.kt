@@ -25,7 +25,7 @@ class ProfileFragment : BaseFragment() {
                 toolbarVisibility = View.VISIBLE,
                 bottomNavVisibility = View.VISIBLE
         )
-//        rootActivity.navigation.selectedItemId = R.id.navigation_profile
+//        rootActivity.bottom_navigation.selectedItemId = R.id.navigation_profile
     }
 
     companion object {
