@@ -1,6 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_user_avatar_profile"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            android:layout_marginTop="@dimen/spacing_normal_16"
+            android:layout_marginBottom="@dimen/spacing_normal_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_user_name_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Ivan Ivanov"
+            android:textColor="@color/colorBaseText"
+            android:textSize="@dimen/font_medium_20"
+            app:layout_constraintBottom_toTopOf="@+id/tv_group_number"
+            app:layout_constraintStart_toEndOf="@+id/iv_user_avatar_profile"
+            app:layout_constraintTop_toTopOf="@+id/iv_user_avatar_profile" />
+
+        <TextView
+            android:id="@+id/tv_group_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            android:text="11-123"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="@dimen/font_small_12"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_user_avatar_profile"
+            app:layout_constraintStart_toEndOf="@+id/iv_user_avatar_profile"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_name_profile" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_institute_title"
+        style="@style/TitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_normal_16"
+        android:layout_marginTop="@dimen/spacing_small_8"
+        android:text="Институт"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/container_user" />
+
+    <TextView
+        android:id="@+id/tv_institute_value"
+        style="@style/BaseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_small_8"
+        android:text="Высшая Школа ИТИС"
+        app:layout_constraintStart_toStartOf="@id/tv_institute_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_institute_title" />
+
+    <View
+        android:id="@+id/divider_institute_group"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/spacing_normal_16"
+        android:layout_marginTop="@dimen/spacing_normal_16"
+        android:background="@color/colorDividerColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_institute_value" />
+
+    <TextView
+        android:id="@+id/tv_group_title"
+        style="@style/TitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_normal_16"
+        android:layout_marginTop="@dimen/spacing_small_8"
+        android:text="Группа"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider_institute_group" />
+
+    <TextView
+        android:id="@+id/tv_group_value"
+        style="@style/BaseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_small_8"
+        android:text="11-702"
+        app:layout_constraintStart_toStartOf="@id/tv_group_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_group_title" />
+
+    <View
+        android:id="@+id/divider_group_priority"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/spacing_normal_16"
+        android:layout_marginTop="@dimen/spacing_normal_16"
+        android:background="@color/colorDividerColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_group_value" />
+
+    <TextView
+        android:id="@+id/tv_priority_title"
+        style="@style/TitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_normal_16"
+        android:layout_marginTop="@dimen/spacing_small_8"
+        android:text="Приоритет"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider_group_priority" />
+
+    <TextView
+        android:id="@+id/tv_priority_value"
+        style="@style/BaseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_small_8"
+        android:text="Студент"
+        app:layout_constraintStart_toStartOf="@id/tv_priority_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_priority_title" />
+
+    <View
+        android:id="@+id/divider_priority_email"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/spacing_normal_16"
+        android:layout_marginTop="@dimen/spacing_normal_16"
+        android:background="@color/colorDividerColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_priority_value" />
+
+    <TextView
+        android:id="@+id/tv_email_title"
+        style="@style/TitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_normal_16"
+        android:layout_marginTop="@dimen/spacing_small_8"
+        android:text="Email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider_priority_email" />
+
+    <TextView
+        android:id="@+id/tv_email_value"
+        style="@style/BaseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_small_8"
+        android:text="someexapleemail@mail.ru"
+        app:layout_constraintStart_toStartOf="@id/tv_email_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_email_title" />
+</androidx.constraintlayout.widget.ConstraintLayout>

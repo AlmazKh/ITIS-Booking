@@ -1,6 +1,7 @@
 package com.almaz.itis_booking.data
 
 import com.almaz.itis_booking.core.interfaces.UserRepository
+import com.almaz.itis_booking.core.model.User
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
@@ -33,5 +34,19 @@ class UserRepositoryImpl
         /*.doOnComplete {
             TODO adding user into DB
         }*/
+    }
+
+    override fun getCurrentUser(): Single<User> {
+        return Single.just(
+            User(
+                "1",
+                "Алмаз Хамеджанов",
+                "Высшая школа ИТИС",
+                "11-702",
+                "Студент",
+                "hamedzhanovalmaz@gmail.com",
+                "https://lh3.googleusercontent.com/-Y4boBb2V0cw/AAAAAAAAAAI/AAAAAAAAAE0/Wuyi-gq4hhQ/s96-c/photo.jpg"
+            )
+        )
     }
 }

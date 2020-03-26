@@ -21,4 +21,5 @@ interface AppComponent {
     fun authComponent(): AuthComponent.Builder
     fun mapComponent(): MapComponent.Builder
     fun timetableComponent(): TimetableComponent.Builder
+    fun profileComponent(): ProfileComponent.Builder
 }

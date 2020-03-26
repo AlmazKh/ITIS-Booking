@@ -49,7 +49,7 @@ class CabinetFragment : BaseFragment() {
         )
         setArrowToolbarVisibility(true)
         setToolbarTitle("Бронирование")
-        setToolbarLogoVisibility(false)
+        setToolbarLogoVisibility(logoVisibility = View.GONE)
 
        /* requireActivity().onBackPressedDispatcher.addCallback(
             this,

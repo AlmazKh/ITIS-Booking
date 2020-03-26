@@ -2,7 +2,9 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,10 +16,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_normal_16"
             android:layout_marginTop="@dimen/spacing_normal_16"
-            android:fontFamily="@font/roboto_medium"
+            style="@style/TitleText"
             android:text="@string/default_cabinet_numbet"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="@dimen/font_large_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,8 +28,7 @@
             android:layout_marginStart="@dimen/spacing_normal_16"
             android:layout_marginTop="@dimen/spacing_normal_16"
             android:text="@string/cabinet_capacity_title"
-            android:fontFamily="@font/roboto"
-            android:textSize="@dimen/font_normal_16"
+            style="@style/BaseText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_cabinet_number" />
 
@@ -38,8 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_tiny_4"
-            android:fontFamily="@font/roboto"
-            android:textSize="@dimen/font_normal_16"
+            style="@style/BaseText"
             app:layout_constraintStart_toEndOf="@id/tv_cabinet_capacity_title"
             app:layout_constraintTop_toTopOf="@id/tv_cabinet_capacity_title" />
 
@@ -50,8 +48,9 @@
             android:layout_marginStart="@dimen/spacing_normal_16"
             android:layout_marginTop="@dimen/spacing_normal_16"
             app:layout_constraintStart_toStartOf="parent"
-            android:fontFamily="@font/roboto"
-            android:textSize="@dimen/font_normal_16"
+            style="@style/BaseText"
+            android:layout_marginBottom="@dimen/spacing_tiny_4"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_cabinet_capacity_title" />
 
         <androidx.appcompat.widget.AppCompatImageView

@@ -33,6 +33,7 @@ class MainActivity : BaseActivity() {
 
     override fun setupView() {
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false);
 
         bottom_nav?.setupWithNavController(navController)
 

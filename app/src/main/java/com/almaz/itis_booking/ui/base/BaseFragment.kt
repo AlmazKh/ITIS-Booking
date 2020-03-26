@@ -2,6 +2,7 @@ package com.almaz.itis_booking.ui.base
 
 import android.content.Context
 import android.view.MenuItem
+import android.view.View
 import androidx.fragment.app.Fragment
 import com.almaz.itis_booking.R
 import com.almaz.itis_booking.ui.main.MainActivity
@@ -33,12 +34,12 @@ open class BaseFragment : Fragment() {
     }
 
     fun setToolbarTitle(title: String) {
-        rootActivity.toolbar.title = title
+        rootActivity.tv_toolbar_title.text = title
     }
 
-    fun setToolbarLogoVisibility(show: Boolean) {
+    fun setToolbarLogoVisibility(logoVisibility: Int) {
 //        rootActivity.toolbar.logo = if (show) R.drawable.logo_kfu else null
-        rootActivity.toolbar.logo.setVisible(show, true)
+        rootActivity.iv_toolbar_logo.visibility = logoVisibility
     }
 
     fun setToolbarAndBottomNavVisibility(toolbarVisibility: Int, bottomNavVisibility: Int) {

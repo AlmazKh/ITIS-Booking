@@ -8,18 +8,32 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
+        android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:logo="@drawable/logo_kfu"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="Booking"
-        app:titleTextColor="@color/colorPrimaryDark" />
+        app:titleTextColor="@color/colorPrimaryDark">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_toolbar_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/logo_kfu"/>
+
+        <TextView
+            android:id="@+id/tv_toolbar_title"
+            style="@style/TitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Booking" />
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <fragment
         android:id="@+id/nav_host_fragment"

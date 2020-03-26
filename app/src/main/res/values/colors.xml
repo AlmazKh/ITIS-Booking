@@ -8,4 +8,5 @@
     <color name="colorSecondaryText">#6E7174</color>
     <color name="colorCabinetStatusFree">#64B73D</color>
     <color name="colorCabinetStatusBooked">#E0822C</color>
+    <color name="colorDividerColor">#F5F5F5</color>
 </resources>

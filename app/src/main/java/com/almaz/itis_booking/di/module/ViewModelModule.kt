@@ -3,6 +3,7 @@ package com.almaz.itis_booking.di.module
 import androidx.lifecycle.ViewModel
 import com.almaz.itis_booking.ui.login.LoginViewModel
 import com.almaz.itis_booking.ui.main.MainViewModel
+import com.almaz.itis_booking.ui.profile.ProfileViewModel
 import com.almaz.itis_booking.ui.timetable.TimetableViewModel
 import dagger.Binds
 import dagger.MapKey
@@ -27,6 +28,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(TimetableViewModel::class)
     abstract fun bindTimetableViewModel(timetableViewModel: TimetableViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ProfileViewModel::class)
+    abstract fun bindProfileViewModel(profileViewModel: ProfileViewModel): ViewModel
 }
 
 @Target(
