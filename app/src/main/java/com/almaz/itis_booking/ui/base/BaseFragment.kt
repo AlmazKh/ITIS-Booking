@@ -3,6 +3,7 @@ package com.almaz.itis_booking.ui.base
 import android.content.Context
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
+import com.almaz.itis_booking.R
 import com.almaz.itis_booking.ui.main.MainActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,10 +28,17 @@ open class BaseFragment : Fragment() {
 
     fun setArrowToolbarVisibility(show: Boolean) {
         rootActivity.supportActionBar?.setDisplayHomeAsUpEnabled(show)
+//        rootActivity.actionBar?.setDisplayHomeAsUpEnabled(show)
+//        rootActivity.actionBar?.setDisplayShowHomeEnabled(show)
     }
 
     fun setToolbarTitle(title: String) {
         rootActivity.toolbar.title = title
+    }
+
+    fun setToolbarLogoVisibility(show: Boolean) {
+//        rootActivity.toolbar.logo = if (show) R.drawable.logo_kfu else null
+        rootActivity.toolbar.logo.setVisible(show, true)
     }
 
     fun setToolbarAndBottomNavVisibility(toolbarVisibility: Int, bottomNavVisibility: Int) {

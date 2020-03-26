@@ -2,6 +2,7 @@ package com.almaz.itis_booking.ui.timetable
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
@@ -12,6 +13,11 @@ import com.almaz.itis_booking.core.model.Cabinet
 import com.almaz.itis_booking.core.model.Status
 import com.almaz.itis_booking.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_cabinet.*
+import kotlinx.android.synthetic.main.fragment_cabinet.iv_cabinet_status
+import kotlinx.android.synthetic.main.fragment_cabinet.tv_cabinet_capacity_value
+import kotlinx.android.synthetic.main.fragment_cabinet.tv_cabinet_number
+import kotlinx.android.synthetic.main.fragment_cabinet.tv_cabinet_status_addition
+import kotlinx.android.synthetic.main.item_timetable.*
 
 class CabinetFragment : BaseFragment() {
 
@@ -29,22 +35,31 @@ class CabinetFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        setArrowToolbarVisibility(true)
-
-        requireActivity().onBackPressedDispatcher.addCallback(
-            this,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    rootActivity.navController.navigateUp()
-                    setArrowToolbarVisibility(false)
-                }
-            })
-
         return inflater.inflate(R.layout.fragment_cabinet, null)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setHasOptionsMenu(true)
+
+        setToolbarAndBottomNavVisibility(
+            toolbarVisibility = View.VISIBLE,
+            bottomNavVisibility = View.GONE
+        )
+        setArrowToolbarVisibility(true)
+        setToolbarTitle("Бронирование")
+        setToolbarLogoVisibility(false)
+
+       /* requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    rootActivity.navController.navigateUp()
+//                    setArrowToolbarVisibility(false)
+                }
+            })*/
+
         tv_cabinet_number.text = arguments?.getParcelable<Cabinet>("cabinet")?.number
         tv_cabinet_capacity_value.text = arguments?.getParcelable<Cabinet>("cabinet")?.capacity
         tv_cabinet_status_addition.text =

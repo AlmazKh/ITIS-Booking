@@ -51,6 +51,7 @@ class TimetableFragment : BaseFragment() {
             toolbarVisibility = View.VISIBLE,
             bottomNavVisibility = View.VISIBLE
         )
+        setArrowToolbarVisibility(false)
 
         initAdapter()
 
