@@ -8,15 +8,17 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.almaz.itis_booking.R
 import com.almaz.itis_booking.core.model.Cabinet
+import com.almaz.itis_booking.core.model.Status
 import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.item_timetable.view.*
 
 class TimetableAdapter(
     private val cabinetLambda: (Cabinet) -> Unit
-) : ListAdapter<Cabinet, TimetableAdapter.TimetableViewHolder>(NewsFeedDiffCallback()) {
+) : ListAdapter<Cabinet, TimetableAdapter.TimetableViewHolder>(TimetableDiffCallback()) {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): TimetableViewHolder {
         val inflater = LayoutInflater.from(p0.context)
-        return TimetableViewHolder(inflater.inflate(R.layout.fragment_cabinet, p0, false))
+        return TimetableViewHolder(inflater.inflate(R.layout.item_timetable, p0, false))
     }
 
     override fun onBindViewHolder(holder: TimetableViewHolder, position: Int) {
@@ -27,14 +29,24 @@ class TimetableAdapter(
     }
 
     class TimetableViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
-
-
         fun bind(cabinet: Cabinet) {
-
+            itemView.tv_cabinet_number.text = cabinet.number
+            itemView.tv_cabinet_capacity_value.text = cabinet.capacity
+            itemView.tv_cabinet_status_addition.text = cabinet.statusAddition
+            when (cabinet.status) {
+                Status.Free -> {
+                    itemView.iv_cabinet_status.background = containerView.resources
+                        .getDrawable(R.drawable.cabinet_status_free, null)
+                }
+                Status.Booked -> {
+                    itemView.iv_cabinet_status.background = containerView.resources
+                        .getDrawable(R.drawable.cabinet_status_booked, null)
+                }
+            }
         }
     }
 
-    class NewsFeedDiffCallback : DiffUtil.ItemCallback<Cabinet>() {
+    class TimetableDiffCallback : DiffUtil.ItemCallback<Cabinet>() {
         override fun areItemsTheSame(oldItem: Cabinet, newItem: Cabinet): Boolean = oldItem == newItem
 
         override fun areContentsTheSame(oldItem: Cabinet, newItem: Cabinet): Boolean = oldItem == newItem

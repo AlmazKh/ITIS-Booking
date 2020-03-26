@@ -15,6 +15,7 @@ class TimetableViewModel
 ) : BaseViewModel() {
 
     val timetableLiveData = MutableLiveData<Response<Timetable>>()
+    val cabinetClickLiveData = MutableLiveData<Response<Cabinet>>()
 
     fun updateTimetable() {
         showLoadingLiveData.value = true
@@ -34,6 +35,6 @@ class TimetableViewModel
     }
 
     fun onCabinetClick(cabinet: Cabinet) {
-
+        cabinetClickLiveData.value = Response.success(cabinet)
     }
 }

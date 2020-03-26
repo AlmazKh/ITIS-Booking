@@ -3,13 +3,13 @@ package com.almaz.itis_booking.ui.timetable
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.almaz.itis_booking.App
 import com.almaz.itis_booking.R
 import com.almaz.itis_booking.ui.base.BaseFragment
-import com.almaz.itis_booking.ui.login.LoginViewModel
-import com.almaz.itis_booking.ui.profile.ProfileFragment
 import com.almaz.itis_booking.utils.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_timetable.*
 import javax.inject.Inject
@@ -47,7 +47,16 @@ class TimetableFragment : BaseFragment() {
         viewModel = ViewModelProvider(this, this.viewModelFactory)
             .get(TimetableViewModel::class.java)
 
+        setToolbarAndBottomNavVisibility(
+            toolbarVisibility = View.VISIBLE,
+            bottomNavVisibility = View.VISIBLE
+        )
+
         initAdapter()
+
+        observeShowLoadingLiveData()
+        observeTimetableLiveData()
+        observeCabinetClickLiveData()
     }
 
     private fun initAdapter() {
@@ -55,7 +64,8 @@ class TimetableFragment : BaseFragment() {
             viewModel.onCabinetClick(it)
         }
         rv_timetable.adapter = timetableAdapter
-        viewModel.updateTimetable()    }
+        viewModel.updateTimetable()
+    }
 
     private fun refreshTimetable() {
         viewModel.updateTimetable()
@@ -75,6 +85,41 @@ class TimetableFragment : BaseFragment() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+    private fun observeTimetableLiveData() =
+        viewModel.timetableLiveData.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                if (it.data != null) {
+                    timetableAdapter.submitList(it.data.cabinets)
+                    rv_timetable.adapter = timetableAdapter
+                }
+                if (it.error != null) {
+                    showSnackbar(getString(R.string.snackbar_error_message))
+                }
+            }
+        })
+
+    private fun observeCabinetClickLiveData() =
+        viewModel.cabinetClickLiveData.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                if (it.data != null) {
+                    rootActivity.navController.navigate(
+                        R.id.action_timetableFragment_to_cabinetFragment,
+                        bundleOf("cabinet" to it.data)
+                    )
+                }
+                if (it.error != null) {
+                    showSnackbar(getString(R.string.snackbar_error_message))
+                }
+            }
+        })
+
+    private fun observeShowLoadingLiveData() =
+        viewModel.showLoadingLiveData.observe(viewLifecycleOwner, Observer {
+            it?.let { show ->
+                rootActivity.showLoading(show)
+            }
+        })
 
     companion object {
         fun newInstance() = TimetableFragment()
