@@ -19,17 +19,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_login_by_google"
+        app:icon="@drawable/ic_google"
+        app:iconGravity="start"
+        app:iconTint="@null"
         android:layout_width="280dp"
-        android:layout_height="56dp"
+        android:layout_height="64dp"
         android:layout_marginStart="@dimen/spacing_normal_16"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="@dimen/spacing_normal_16"
-        android:background="@drawable/google_sign_in_btn"
         android:fontFamily="@font/roboto"
+        android:textAlignment="textStart"
         android:text="@string/btn_text_enter_by_google"
-        android:textAlignment="center"
         android:textColor="@color/colorBaseText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
