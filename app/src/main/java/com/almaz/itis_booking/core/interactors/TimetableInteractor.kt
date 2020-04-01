@@ -2,6 +2,7 @@ package com.almaz.itis_booking.core.interactors
 
 import com.almaz.itis_booking.core.interfaces.TimetableRepository
 import com.almaz.itis_booking.core.model.Timetable
+import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -12,5 +13,9 @@ class TimetableInteractor
 ) {
     fun getTimetable(): Single<Timetable> =
         timetableRepository.getTimetable()
+            .subscribeOn(Schedulers.io())
+
+    fun bookCabinet(): Completable =
+        timetableRepository.bookCabinet()
             .subscribeOn(Schedulers.io())
 }

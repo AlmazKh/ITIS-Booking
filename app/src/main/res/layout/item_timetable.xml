@@ -58,6 +58,7 @@
             android:layout_width="64dp"
             android:layout_height="24dp"
             android:layout_marginEnd="@dimen/spacing_large_24"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_cabinet_number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_cabinet_number" />
     </androidx.constraintlayout.widget.ConstraintLayout>

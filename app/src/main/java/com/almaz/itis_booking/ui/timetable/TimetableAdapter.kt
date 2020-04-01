@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.almaz.itis_booking.R
 import com.almaz.itis_booking.core.model.Cabinet
 import com.almaz.itis_booking.core.model.Status
+import com.almaz.itis_booking.core.model.Time
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_timetable.view.*
 
@@ -33,7 +34,7 @@ class TimetableAdapter(
             itemView.tv_cabinet_number.text = cabinet.number
             itemView.tv_cabinet_capacity_value.text = cabinet.capacity
             itemView.tv_cabinet_status_addition.text = cabinet.statusAddition
-            when (cabinet.status) {
+            when (cabinet.business[Time.SixthClass]) {
                 Status.Free -> {
                     itemView.iv_cabinet_status.background = containerView.resources
                         .getDrawable(R.drawable.cabinet_status_free, null)

@@ -65,6 +65,10 @@
         <argument
             android:name="arg_cabinet"
             app:argType="com.almaz.itis_booking.core.model.Cabinet"/>
+
+        <action
+            android:id="@+id/action_cabinetFragment_to_timetableFragment"
+            app:destination="@id/timetableFragment" />
     </fragment>
 
     <fragment

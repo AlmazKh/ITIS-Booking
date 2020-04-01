@@ -8,6 +8,6 @@ data class Cabinet (
     val id: Long,
     val number: String,
     val capacity: String,
-    val status: Status,
+    val business: Map<Time, Status>,
     val statusAddition: String?
 ): Parcelable

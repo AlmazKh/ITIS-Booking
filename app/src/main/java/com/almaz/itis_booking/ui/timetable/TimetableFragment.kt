@@ -52,6 +52,8 @@ class TimetableFragment : BaseFragment() {
             bottomNavVisibility = View.VISIBLE
         )
         setArrowToolbarVisibility(false)
+        setToolbarLogoVisibility(View.VISIBLE)
+        setToolbarTitle("Booking")
 
         initAdapter()
 
