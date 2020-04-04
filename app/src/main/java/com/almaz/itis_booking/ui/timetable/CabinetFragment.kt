@@ -58,14 +58,6 @@ class CabinetFragment : BaseFragment() {
         setToolbarTitle("Бронирование")
         setToolbarLogoVisibility(logoVisibility = View.GONE)
 
-       /* requireActivity().onBackPressedDispatcher.addCallback(
-            this,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    rootActivity.navController.navigateUp()
-//                    setArrowToolbarVisibility(false)
-                }
-            })*/
         setUpData()
 
         observeCabinetBookedLiveData()
@@ -150,18 +142,18 @@ class CabinetFragment : BaseFragment() {
             it?.let {
                 if (it) {
                     showSnackbar("Booked")
-                    rootActivity.navController.navigate(R.id.action_cabinetFragment_to_timetableFragment)
+                    rootActivity.navController.navigateUp()
                 } else {
                     showSnackbar(R.string.snackbar_error_message.toString())
                 }
             }
         })
 
-    companion object {
+    /*companion object {
         fun newInstance(arguments: Bundle?): CabinetFragment {
             val fragment = CabinetFragment()
             fragment.arguments = arguments
             return fragment
         }
-    }
+    }*/
 }

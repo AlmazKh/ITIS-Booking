@@ -44,6 +44,9 @@ class MainActivity : BaseActivity() {
         observeIsLoginedLiveData()
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp()
+    }
 
     private fun observeIsLoginedLiveData() =
         viewModel.isLoginedLiveData.observe(this, Observer { response ->
