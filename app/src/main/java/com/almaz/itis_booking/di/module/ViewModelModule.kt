@@ -5,6 +5,7 @@ import com.almaz.itis_booking.ui.login.LoginViewModel
 import com.almaz.itis_booking.ui.main.MainViewModel
 import com.almaz.itis_booking.ui.profile.ProfileViewModel
 import com.almaz.itis_booking.ui.timetable.CabinetViewModel
+import com.almaz.itis_booking.ui.timetable.FilterViewModel
 import com.almaz.itis_booking.ui.timetable.TimetableViewModel
 import dagger.Binds
 import dagger.MapKey
@@ -39,6 +40,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(CabinetViewModel::class)
     abstract fun bindCabinetViewModel(cabinetViewModel: CabinetViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(FilterViewModel::class)
+    abstract fun bindFilterViewModel(filterViewModel: FilterViewModel): ViewModel
 }
 
 @Target(

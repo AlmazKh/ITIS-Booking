@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.almaz.itis_booking.di.module.TimetableModule
 import com.almaz.itis_booking.di.scope.ScreenScope
 import com.almaz.itis_booking.ui.timetable.CabinetFragment
+import com.almaz.itis_booking.ui.timetable.FilterFragment
 import com.almaz.itis_booking.ui.timetable.TimetableFragment
 import dagger.BindsInstance
 import dagger.Subcomponent
@@ -24,4 +25,5 @@ interface TimetableComponent {
 
     fun inject(timetableFragment: TimetableFragment)
     fun inject(cabinetFragment: CabinetFragment)
+    fun inject(filterFragment: FilterFragment)
 }

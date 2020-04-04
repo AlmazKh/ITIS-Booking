@@ -15,4 +15,7 @@
     <string name="filter_item_btn_title">filter button</string>
     <string name="default_cabinet_numbet">1301</string>
     <string name="cabinet_capacity_title">Вместимость:</string>
+    <string name="add_filter_approve">Отфильтровать</string>
+    <string name="clear_filter">Очистить фильтр</string>
+
 </resources>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_date_title"
+            style="@style/TitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            android:layout_marginTop="@dimen/spacing_normal_16"
+            android:text="Дата"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/rg_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small_8"
+            android:checkedButton="@+id/first"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="@id/tv_date_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_date_title">
+
+            <RadioButton
+                android:id="@+id/rb_today"
+                style="@style/BaseText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Сегодня" />
+
+            <RadioButton
+                android:id="@+id/rb_tomorrow"
+                style="@style/BaseText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Завтра" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tv_choose_date"
+            style="@style/BaseText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small_8"
+            android:clickable="true"
+            android:drawableStart="@drawable/ic_calendar"
+            android:drawablePadding="@dimen/spacing_small_8"
+            android:focusable="true"
+            android:text="Выбрать дату"
+            app:layout_constraintStart_toStartOf="@id/rg_date"
+            app:layout_constraintTop_toBottomOf="@id/rg_date" />
+
+        <View
+            android:id="@+id/divider_date_time"
+            style="@style/Divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_choose_date" />
+
+        <TextView
+            android:id="@+id/tv_time_title"
+            style="@style/TitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            android:layout_marginTop="@dimen/spacing_normal_16"
+            android:text="Время"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/divider_date_time" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chg_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small_8"
+            app:layout_constraintStart_toStartOf="@id/tv_time_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_time_title">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/ch_first"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8:30 - 10:00" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/rb_second"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10:10 - 11:40" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/ch_third"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11:50 - 13:20" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/ch_fourth"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="14:00 - 15:30" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/ch_fifth"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15:40 - 17:10" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/ch_sixth"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17:50 - 19:20" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <View
+            android:id="@+id/divider_time_show_type"
+            style="@style/Divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chg_time" />
+
+        <TextView
+            android:id="@+id/tv_show_type_title"
+            style="@style/TitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            android:layout_marginTop="@dimen/spacing_normal_16"
+            android:text="Показать аудитории"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/divider_time_show_type" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chg_show_cabinets_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small_8"
+            app:layout_constraintStart_toStartOf="@id/tv_show_type_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_show_type_title">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/ch_free"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Свободные" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/ch_booked_priority_lower"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Занятые людьми с меньшим приоритетом" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <View
+            android:id="@+id/divider_show_type_floor"
+            style="@style/Divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chg_show_cabinets_type" />
+
+        <TextView
+            android:id="@+id/tv_floor_title"
+            style="@style/TitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            android:layout_marginTop="@dimen/spacing_normal_16"
+            android:text="Этаж"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/divider_show_type_floor" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chg_floor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small_8"
+            app:layout_constraintStart_toStartOf="@id/tv_floor_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_floor_title">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/ch_13"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="13" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/ch_14"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="14" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/ch_15"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <View
+            android:id="@+id/divider_floor_capacity"
+            style="@style/Divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chg_floor" />
+
+        <TextView
+            android:id="@+id/tv_capacity_title"
+            style="@style/TitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            android:layout_marginTop="@dimen/spacing_normal_16"
+            android:text="Вместимость"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/divider_floor_capacity" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chg_capacity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small_8"
+            app:layout_constraintStart_toStartOf="@id/tv_capacity_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_capacity_title">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/ch_low_20"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ниже 20" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/ch_between_20_30"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20 - 30" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/ch_over_30"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Выше 30" />
+        </com.google.android.material.chip.ChipGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

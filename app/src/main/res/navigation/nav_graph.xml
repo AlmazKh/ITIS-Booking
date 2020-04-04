@@ -54,6 +54,11 @@
             android:id="@+id/action_timetableFragment_to_cabinetFragment"
             app:destination="@id/cabinetFragment"
             app:popUpTo="@id/timetableFragment" />
+
+        <action
+            android:id="@+id/action_timetableFragment_to_filterFragment"
+            app:destination="@id/filterFragment"
+            app:popUpTo="@id/timetableFragment" />
     </fragment>
 
     <fragment
@@ -65,10 +70,14 @@
         <argument
             android:name="arg_cabinet"
             app:argType="com.almaz.itis_booking.core.model.Cabinet"/>
+    </fragment>
 
-        <action
-            android:id="@+id/action_cabinetFragment_to_timetableFragment"
-            app:destination="@id/timetableFragment" />
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="com.almaz.itis_booking.ui.timetable.FilterFragment"
+        android:label="fragment_filter"
+        tools:layout="@layout/fragment_filter">
+
     </fragment>
 
     <fragment

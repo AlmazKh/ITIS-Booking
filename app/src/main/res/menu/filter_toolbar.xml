@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/btn_add_filter_approve"
+        android:icon="@drawable/add_filter_approve_btn"
+        android:title="@string/add_filter_approve"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/btn_clear_filter"
+        android:icon="@drawable/clear_filter_btn"
+        android:title="@string/clear_filter"
+        app:showAsAction="ifRoom"/>
+</menu>

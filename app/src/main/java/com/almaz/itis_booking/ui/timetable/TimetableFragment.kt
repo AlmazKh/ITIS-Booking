@@ -82,6 +82,7 @@ class TimetableFragment : BaseFragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.filter -> {
+                rootActivity.navController.navigate(R.id.action_timetableFragment_to_filterFragment)
                 showSnackbar("U go to filter SUCCESS")
                 true
             }
