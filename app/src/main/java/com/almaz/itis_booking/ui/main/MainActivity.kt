@@ -4,7 +4,6 @@ import android.view.View
 import android.view.WindowManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.almaz.itis_booking.App
@@ -25,11 +24,7 @@ class MainActivity : BaseActivity() {
     override val layoutId: Int
         get() = R.layout.activity_main
 
-    override fun inject() = App.appComponent
-            .mainComponent()
-            .withActivity(this)
-            .build()
-            .inject(this)
+    override fun inject() = App.appComponent.inject(this)
 
     override fun setupView() {
         setSupportActionBar(toolbar)
