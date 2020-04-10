@@ -104,7 +104,7 @@ class FilterFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
     }
 
     private fun setUpDefaultData() {
-        
+
     }
 
 }

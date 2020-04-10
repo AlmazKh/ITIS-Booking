@@ -23,18 +23,20 @@ class TimetableAdapter(
     }
 
     override fun onBindViewHolder(holder: TimetableViewHolder, position: Int) {
-        holder.bind(getItem(position))
-        holder.itemView.setOnClickListener {
-            cabinetLambda.invoke(getItem(position))
+        for (elt in getItem(position).business) {
+            holder.bind(getItem(position), elt)
+            holder.itemView.setOnClickListener {
+                cabinetLambda.invoke(getItem(position))
+            }
         }
     }
 
     class TimetableViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
-        fun bind(cabinet: Cabinet) {
+        fun bind(cabinet: Cabinet, business: Map.Entry<Time, Status>) {
             itemView.tv_cabinet_number.text = cabinet.number
             itemView.tv_cabinet_capacity_value.text = cabinet.capacity
             itemView.tv_cabinet_status_addition.text = cabinet.statusAddition
-            when (cabinet.business[Time.SixthClass]) {
+            when (business.value) {
                 Status.Free -> {
                     itemView.iv_cabinet_status.background = containerView.resources
                         .getDrawable(R.drawable.cabinet_status_free, null)
