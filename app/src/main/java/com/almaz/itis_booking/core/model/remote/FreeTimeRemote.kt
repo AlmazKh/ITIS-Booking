@@ -1,16 +1,17 @@
 package com.almaz.itis_booking.core.model.remote
 
+import com.almaz.itis_booking.core.model.Cabinet
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class CabinetRemote (
+data class FreeTimeRemote(
     @SerializedName("id")
     @Expose
     val id: Int,
-    @SerializedName("number")
+    @SerializedName("time")
     @Expose
-    val number: Int,
-    @SerializedName("capacity")
+    val time: String,
+    @SerializedName("cabinet")
     @Expose
-    val capacity: Int
+    val cabinet: Cabinet
 )

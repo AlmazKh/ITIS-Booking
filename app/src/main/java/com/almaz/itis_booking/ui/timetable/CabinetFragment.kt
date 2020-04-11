@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.almaz.itis_booking.App
 import com.almaz.itis_booking.R
+import com.almaz.itis_booking.core.model.Business
 import com.almaz.itis_booking.core.model.Cabinet
 import com.almaz.itis_booking.core.model.Status
 import com.almaz.itis_booking.core.model.Time
@@ -98,18 +99,18 @@ class CabinetFragment : BaseFragment() {
         }
     }
 
-    private fun mapCabinetBusinessIntoStringTime(business: Map<Time, Status>?): MutableList<String>? {
+    private fun mapCabinetBusinessIntoStringTime(business: List<Business>?): MutableList<String>? {
         val list: MutableList<String>? = mutableListOf()
         if (business != null) {
             for (item in business) {
-                if (item.value == Status.Free) {
-                    when (item.key) {
-                        Time.FirstClass -> list?.add("8:30 - 10:00")
-                        Time.SecondClass -> list?.add("10:10 - 11:40")
-                        Time.ThirdClass -> list?.add("11:50 - 13:20")
-                        Time.FourthClass -> list?.add("14:00 - 15:30")
-                        Time.FifthClass -> list?.add("15:40 - 17:10")
-                        Time.SixthClass -> list?.add("17:50 - 19:20")
+                if (item.status == Status.Free) {
+                    when (item.time) {
+                        Time.FirstClass -> list?.add(Time.FirstClass.getStringTime())
+                        Time.SecondClass -> list?.add(Time.SecondClass.getStringTime())
+                        Time.ThirdClass -> list?.add(Time.ThirdClass.getStringTime())
+                        Time.FourthClass -> list?.add(Time.FourthClass.getStringTime())
+                        Time.FifthClass -> list?.add(Time.FifthClass.getStringTime())
+                        Time.SixthClass -> list?.add(Time.SixthClass.getStringTime())
                     }
                 }
             }
@@ -123,7 +124,7 @@ class CabinetFragment : BaseFragment() {
         spinner_cabinet_free_time.adapter = adapter
     }
 
-    private fun setUpStatus(time: Time) {
+    /*private fun setUpStatus(time: Time) {
         when (arguments?.getParcelable<Cabinet>("cabinet")?.business?.get(time)) {
             Status.Free -> {
                 iv_cabinet_status.background = rootActivity.resources
@@ -135,7 +136,7 @@ class CabinetFragment : BaseFragment() {
 
             }
         }
-    }
+    }*/
 
     private fun observeCabinetBookedLiveData() =
         viewModel.cabinetBookedLiveData.observe(viewLifecycleOwner, Observer {

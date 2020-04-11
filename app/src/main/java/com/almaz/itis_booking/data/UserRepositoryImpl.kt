@@ -39,7 +39,7 @@ class UserRepositoryImpl
     override fun getCurrentUser(): Single<User> {
         return Single.just(
             User(
-                "1",
+                1,
                 "Алмаз Хамеджанов",
                 "Высшая школа ИТИС",
                 "11-702",

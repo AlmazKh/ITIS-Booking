@@ -12,6 +12,8 @@ import com.almaz.itis_booking.R
 import com.almaz.itis_booking.ui.base.BaseFragment
 import com.almaz.itis_booking.utils.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_timetable.*
+import java.text.DateFormat
+import java.util.*
 import javax.inject.Inject
 
 class TimetableFragment : BaseFragment() {
@@ -67,11 +69,11 @@ class TimetableFragment : BaseFragment() {
             viewModel.onCabinetClick(it)
         }
         rv_timetable.adapter = timetableAdapter
-        viewModel.updateTimetable()
+        viewModel.updateTimetable(getCurrentDate())
     }
 
     private fun refreshTimetable() {
-        viewModel.updateTimetable()
+        viewModel.updateTimetable(getCurrentDate())
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -90,11 +92,16 @@ class TimetableFragment : BaseFragment() {
         }
     }
 
+    private fun getCurrentDate(): String {
+        return "11/04/2020"
+//       return DateFormat.getDateInstance(DateFormat.SHORT).format(Calendar.getInstance().time)
+    }
+
     private fun observeTimetableLiveData() =
         viewModel.timetableLiveData.observe(viewLifecycleOwner, Observer {
             it?.let {
                 if (it.data != null) {
-                    timetableAdapter.submitList(it.data.cabinets)
+                    timetableAdapter.submitList(it.data)
                     rv_timetable.adapter = timetableAdapter
                 }
                 if (it.error != null) {

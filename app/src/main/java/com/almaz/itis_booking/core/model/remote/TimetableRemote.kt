@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class TimetableRemote(
 
-    @SerializedName("cabinets")
+    @SerializedName("businesses")
     @Expose
-    val cabinetRemotes: List<CabinetRemote>?
+    val businesses: List<BusinessRemote>?
 )

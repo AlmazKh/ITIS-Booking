@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Module
 class NetModule {
     @Provides
-    fun provideBaseUrl() = "http://192.168.1.2:8080/"
+    fun provideBaseUrl() = "http://192.168.1.4:8080/"
 
     @Provides
     fun provideConverterFactory(): GsonConverterFactory =

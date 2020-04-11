@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.almaz.itis_booking.R
+import com.almaz.itis_booking.core.model.Business
 import com.almaz.itis_booking.core.model.Cabinet
 import com.almaz.itis_booking.core.model.Status
 import com.almaz.itis_booking.core.model.Time
@@ -32,11 +33,11 @@ class TimetableAdapter(
     }
 
     class TimetableViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
-        fun bind(cabinet: Cabinet, business: Map.Entry<Time, Status>) {
+        fun bind(cabinet: Cabinet, business: Business) {
             itemView.tv_cabinet_number.text = cabinet.number
             itemView.tv_cabinet_capacity_value.text = cabinet.capacity
             itemView.tv_cabinet_status_addition.text = cabinet.statusAddition
-            when (business.value) {
+            when (business.status) {
                 Status.Free -> {
                     itemView.iv_cabinet_status.background = containerView.resources
                         .getDrawable(R.drawable.cabinet_status_free, null)

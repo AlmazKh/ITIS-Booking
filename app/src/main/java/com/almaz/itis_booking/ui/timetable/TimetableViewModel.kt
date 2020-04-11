@@ -14,13 +14,13 @@ class TimetableViewModel
     private val timetableInteractor: TimetableInteractor
 ) : BaseViewModel() {
 
-    val timetableLiveData = MutableLiveData<Response<Timetable>>()
+    val timetableLiveData = MutableLiveData<Response<List<Cabinet>>>()
     val cabinetClickLiveData = MutableLiveData<Response<Cabinet>>()
 
-    fun updateTimetable() {
+    fun updateTimetable(date: String) {
         showLoadingLiveData.value = true
         disposables.add(
-            timetableInteractor.getTimetable()
+            timetableInteractor.getCabinetsFreeTime(date)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doAfterTerminate{
                     showLoadingLiveData.value = false
