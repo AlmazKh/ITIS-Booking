@@ -64,7 +64,12 @@ class CabinetFragment : BaseFragment() {
         observeCabinetBookedLiveData()
 
         btn_booking.setOnClickListener {
-            viewModel.bookCabinet()
+            arguments?.getParcelable<Cabinet>("cabinet")?.let { it1 ->
+                viewModel.bookCabinet(
+                    it1,
+                    spinner_cabinet_free_time.selectedItem as String
+                )
+            }
         }
 
         spinner_cabinet_free_time.onItemSelectedListener =
@@ -95,6 +100,7 @@ class CabinetFragment : BaseFragment() {
             setUpDataIntoSpinner(business)
         } else {
             spinner_cabinet_free_time.visibility = View.GONE
+            btn_booking.isActivated = false
             showSnackbar("No free time")
         }
     }
@@ -143,18 +149,10 @@ class CabinetFragment : BaseFragment() {
             it?.let {
                 if (it) {
                     showSnackbar("Booked")
-                    rootActivity.navController.navigateUp()
+                    rootActivity.navController.navigate(R.id.action_cabinetFragment_to_timetableFragment)
                 } else {
                     showSnackbar(R.string.snackbar_error_message.toString())
                 }
             }
         })
-
-    /*companion object {
-        fun newInstance(arguments: Bundle?): CabinetFragment {
-            val fragment = CabinetFragment()
-            fragment.arguments = arguments
-            return fragment
-        }
-    }*/
 }

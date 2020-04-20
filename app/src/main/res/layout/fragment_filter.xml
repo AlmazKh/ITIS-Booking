@@ -19,31 +19,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioGroup
-            android:id="@+id/rg_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_small_8"
-            android:checkedButton="@+id/first"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="@id/tv_date_title"
-            app:layout_constraintTop_toBottomOf="@id/tv_date_title">
-
-            <RadioButton
-                android:id="@+id/rb_today"
-                style="@style/BaseText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Сегодня" />
-
-            <RadioButton
-                android:id="@+id/rb_tomorrow"
-                style="@style/BaseText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Завтра" />
-        </RadioGroup>
-
         <TextView
             android:id="@+id/tv_choose_date"
             style="@style/BaseText"
@@ -55,8 +30,8 @@
             android:drawablePadding="@dimen/spacing_small_8"
             android:focusable="true"
             android:text="Выбрать дату"
-            app:layout_constraintStart_toStartOf="@id/rg_date"
-            app:layout_constraintTop_toBottomOf="@id/rg_date" />
+            app:layout_constraintStart_toStartOf="@id/tv_date_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_date_title" />
 
         <View
             android:id="@+id/divider_date_time"
@@ -85,42 +60,42 @@
             app:layout_constraintTop_toBottomOf="@id/tv_time_title">
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/ch_first"
+                android:id="@+id/ch_time_first"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="8:30 - 10:00" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/rb_second"
+                android:id="@+id/ch_time_second"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10:10 - 11:40" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/ch_third"
+                android:id="@+id/ch_time_third"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="11:50 - 13:20" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/ch_fourth"
+                android:id="@+id/ch_time_fourth"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="14:00 - 15:30" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/ch_fifth"
+                android:id="@+id/ch_time_fifth"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="15:40 - 17:10" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/ch_sixth"
+                android:id="@+id/ch_time_sixth"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -150,6 +125,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small_8"
+            app:singleSelection="true"
             app:layout_constraintStart_toStartOf="@id/tv_show_type_title"
             app:layout_constraintTop_toBottomOf="@id/tv_show_type_title">
 
@@ -158,7 +134,8 @@
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Свободные" />
+                android:text="Свободные"
+                android:checked="true"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/ch_booked_priority_lower"
@@ -195,25 +172,28 @@
             app:layout_constraintTop_toBottomOf="@id/tv_floor_title">
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/ch_13"
+                android:id="@+id/ch_floor_13"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="13" />
+                android:text="13"
+                android:checked="true"/>
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/ch_14"
+                android:id="@+id/ch_floor_14"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="14" />
+                android:text="14"
+                android:checked="true"/>
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/ch_15"
+                android:id="@+id/ch_floor_15"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="15" />
+                android:text="15"
+                android:checked="true"/>
         </com.google.android.material.chip.ChipGroup>
 
         <View
@@ -240,14 +220,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small_8"
             app:layout_constraintStart_toStartOf="@id/tv_capacity_title"
-            app:layout_constraintTop_toBottomOf="@id/tv_capacity_title">
+            app:layout_constraintTop_toBottomOf="@id/tv_capacity_title"
+            app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/ch_low_20"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ниже 20" />
+                android:text="20  ниже" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/ch_between_20_30"

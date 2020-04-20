@@ -3,7 +3,6 @@ package com.almaz.itis_booking.ui.timetable
 import androidx.lifecycle.MutableLiveData
 import com.almaz.itis_booking.core.interactors.TimetableInteractor
 import com.almaz.itis_booking.core.model.Cabinet
-import com.almaz.itis_booking.core.model.Timetable
 import com.almaz.itis_booking.ui.base.BaseViewModel
 import com.almaz.itis_booking.utils.Response
 import io.reactivex.android.schedulers.AndroidSchedulers

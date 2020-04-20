@@ -3,8 +3,8 @@ package com.almaz.itis_booking.data
 import com.almaz.itis_booking.core.interfaces.TimetableRepository
 import com.almaz.itis_booking.core.model.*
 import com.almaz.itis_booking.core.model.remote.BusinessRemote
+import com.almaz.itis_booking.core.model.remote.CabinetRemote
 import com.almaz.itis_booking.core.model.remote.FreeTimeRemote
-import com.almaz.itis_booking.core.model.remote.TimetableRemote
 import com.almaz.itis_booking.core.model.remote.UserRemote
 import com.almaz.itis_booking.data.api.BookingApi
 import io.reactivex.Completable
@@ -13,58 +13,100 @@ import javax.inject.Inject
 
 class TimetableRepositoryImpl
 @Inject constructor(
-    private val bookingApi: BookingApi
+    private val bookingApi: BookingApi,
+    private val priorityHolder: PriorityHolder
 ) : TimetableRepository {
 
     private var queryDate: String = ""
 
-    /*override fun getTimetable(): Single<Timetable> {
-        return Single.just(
-            Timetable(
-                listOf(
-                    Cabinet(
-                        1, "1301", "20", mapOf(
-                            Time.SecondClass to Status.Free,
-                            Time.ThirdClass to Status.Booked,
-                            Time.FourthClass to Status.Free,
-                            Time.FifthClass to Status.Free,
-                            Time.SixthClass to Status.Booked
-                        ), "some addition 10:10-12:00"
-                    ),
-                    Cabinet(
-                        2, "1302", "30", mapOf(
-                            Time.SecondClass to Status.Free,
-                            Time.ThirdClass to Status.Booked,
-                            Time.FourthClass to Status.Free,
-                            Time.FifthClass to Status.Free,
-                            Time.SixthClass to Status.Free
-                        ), "some addition 11:00-13:00"
-                    )
-                )
-            )
-        )
-    }*/
-
-    override fun getTimetable(): Single<Timetable> {
-        return Single.fromObservable(
-            bookingApi.getTimetable()
-        ).map {
-            mapRemoteTimetableToLocal(it)
-        }
-    }
-
     override fun getCabinetsFreeTime(date: String): Single<List<Cabinet>> {
         queryDate = date
         return Single.fromObservable(
-            bookingApi.getCabinetFreeTimeByDate("11/04/2020")
+            bookingApi.getCabinetFreeTimeByDate(date)
         )
             .map {
                 mapFreeTimeToCabinet(it)
             }
     }
 
-    override fun bookCabinet(): Completable {
-        return Completable.complete()
+    override fun getDataWithFilter(
+        date: String,
+        times: List<String>,
+        bookedStatus: String,
+        floors: List<String>,
+        capacity: String,
+        priority: Int
+    ): Single<List<Cabinet>> {
+        return when (bookedStatus) {
+            "FREE" -> {
+                Single.fromObservable(
+                    bookingApi.getCabinetFreeTimeByFilter(
+                        date,
+                        getTimeEnumNameFromValue(times),
+                        floors,
+                        capacity
+                    )
+                ).map {
+                    mapFreeTimeToCabinet(it)
+                }
+            }
+            "ALL" -> {
+                Single.fromObservable(
+                    bookingApi.getCabinetBusinessByFilter(
+                        date,
+                        getTimeEnumNameFromValue(times),
+                        floors,
+                        capacity,
+                        priority
+                    )
+                ).map {
+                    mapRemoteBusinessToListOfCabinets(it)
+                }
+            }
+            else -> Single.just(listOf())
+        }
+    }
+
+
+    override fun bookCabinet(user: User, cabinet: Cabinet, time: String): Completable {
+        return Completable.fromObservable(
+            bookingApi.bookCabinet(
+                BusinessRemote(
+                    0,
+                    cabinet.business.first().date,
+                    getTimeEnumNameFromValue(listOf(time)).first(),
+                    Status.Booked.toString(),
+                    CabinetRemote(
+                        cabinet.id,
+                        cabinet.number.toInt(),
+                        cabinet.capacity.toInt()
+                    ),
+                    UserRemote(
+                        user.id,
+                        user.name,
+                        user.institute,
+                        user.groupNumber,
+                        priorityHolder.getPriorityValueByName(user.priority),
+                        user.email!!,
+                        user.photo
+                    )
+                )
+            )
+        )
+    }
+
+
+    private fun getTimeEnumNameFromValue(times: List<String>): List<String> {
+        val list: MutableList<String> = mutableListOf()
+        for (item in Time.values()) {
+            for (time in times) {
+                if (item.getStringTime() == time) {
+                    list.add(item.toString())
+                    break
+                }
+            }
+        }
+        return list
     }
 
     private fun mapFreeTimeToCabinet(remote: List<FreeTimeRemote>): List<Cabinet> {
@@ -103,10 +145,11 @@ class TimetableRepositoryImpl
             }
     }
 
-    private fun mapRemoteTimetableToLocal(remote: TimetableRemote): Timetable {
+
+    private fun mapRemoteBusinessToListOfCabinets(remote: List<BusinessRemote>): List<Cabinet> {
         val list: MutableList<Cabinet> = mutableListOf()
         val set: MutableSet<Int> = mutableSetOf()
-        for (business: BusinessRemote in remote.businesses!!) {
+        for (business: BusinessRemote in remote) {
             if (set.contains(business.cabinet.id)) {
                 continue
             }
@@ -115,18 +158,19 @@ class TimetableRepositoryImpl
                     business.cabinet.id,
                     business.cabinet.number.toString(),
                     business.cabinet.capacity.toString(),
-                    "свободная аудитория ... будте инфа тут",
-                    addFreeCabinets(
+                    createAddition(
+                        business.cabinet.id,
+                        remote
+                    ),
                         getCabinetBusinessList(
                             business.cabinet.id,
-                            remote.businesses.toMutableList()
-                        )
+                            remote.toMutableList()
                     )
                 )
             )
             set.add(business.cabinet.id)
         }
-        return Timetable(list)
+        return list
     }
 
     private fun getCabinetBusinessList(
@@ -140,26 +184,9 @@ class TimetableRepositoryImpl
                     it.date,
                     Time.valueOf(it.time),
                     Status.valueOf(it.status),
-                    mapRemoteUserToLocal(it.usr)
+                    if (it.usr.id == 0) null else mapRemoteUserToLocal(it.usr)
                 )
             }.toMutableList()
-    }
-
-    private fun addFreeCabinets(list: MutableList<Business>): MutableList<Business> {
-        Time.values().forEach {
-            if (!list.contains<Any>(it)) {
-                list.add(
-                    Business(
-                        null,
-                        list[0].date,
-                        it,
-                        Status.Free,
-                        null
-                        )
-                )
-            }
-        }
-        return list
     }
 
     private fun mapRemoteUserToLocal(remote: UserRemote): User {
@@ -170,16 +197,20 @@ class TimetableRepositoryImpl
             remote.groupNumber,
             remote.priority.toString(),
             remote.email,
-            null
+            remote.photo
         )
     }
 
-    private fun createAddition(map: Map<Time, Status>): String {
-        for (elt in map) {
-            if (elt.value == Status.Free) {
-                return "Аудитория свободна в ${elt.key.getStringTime()}"
+    private fun createAddition(
+        cabinetId: Int,
+        list: List<BusinessRemote>
+    ): String {
+        list.filter { it.cabinet.id == cabinetId }
+            .forEach {
+                if (it.status == Status.Free.toString()) {
+                    return "Аудитория свободна в ${Time.valueOf(it.time).getStringTime()}"
             }
         }
-        return "На сегодня все занято"
+        return "Всё занято, но ваш приоритет позволяет пребить бронь"
     }
 }

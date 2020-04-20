@@ -12,8 +12,6 @@ import com.almaz.itis_booking.R
 import com.almaz.itis_booking.ui.base.BaseFragment
 import com.almaz.itis_booking.utils.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_timetable.*
-import java.text.DateFormat
-import java.util.*
 import javax.inject.Inject
 
 class TimetableFragment : BaseFragment() {
@@ -69,7 +67,16 @@ class TimetableFragment : BaseFragment() {
             viewModel.onCabinetClick(it)
         }
         rv_timetable.adapter = timetableAdapter
-        viewModel.updateTimetable(getCurrentDate())
+        if (arguments != null) {
+            if (!arguments?.isEmpty!!) {
+                timetableAdapter.submitList(arguments?.getParcelableArrayList("cabinets"))
+                rv_timetable.adapter = timetableAdapter
+            } else {
+                viewModel.updateTimetable(getCurrentDate())
+            }
+        } else {
+            viewModel.updateTimetable(getCurrentDate())
+        }
     }
 
     private fun refreshTimetable() {
@@ -85,7 +92,6 @@ class TimetableFragment : BaseFragment() {
         return when (item.itemId) {
             R.id.filter -> {
                 rootActivity.navController.navigate(R.id.action_timetableFragment_to_filterFragment)
-                showSnackbar("U go to filter SUCCESS")
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -131,8 +137,4 @@ class TimetableFragment : BaseFragment() {
                 rootActivity.showLoading(show)
             }
         })
-
-    companion object {
-        fun newInstance() = TimetableFragment()
-    }
 }

@@ -47,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_normal_16"
             android:layout_marginTop="@dimen/spacing_normal_16"
+            android:layout_marginEnd="@dimen/spacing_normal_16"
             app:layout_constraintStart_toStartOf="parent"
             style="@style/BaseText"
             android:layout_marginBottom="@dimen/spacing_tiny_4"

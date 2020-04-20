@@ -21,6 +21,8 @@ data class UserRemote(
     val priority: Int,
     @SerializedName("email")
     @Expose
-    val email: String
-
+    val email: String,
+    @SerializedName("photo")
+    @Expose
+    val photo: String?
 )

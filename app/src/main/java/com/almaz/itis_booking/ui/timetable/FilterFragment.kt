@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.*
 import android.widget.DatePicker
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.almaz.itis_booking.App
 import com.almaz.itis_booking.R
@@ -31,9 +33,9 @@ class FilterFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProvider(this, this.viewModelFactory)
                 .get(FilterViewModel::class.java)
@@ -57,6 +59,8 @@ class FilterFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
         tv_choose_date.setOnClickListener {
             showDatePickerDialog()
         }
+
+        observeFilteredTimetableLiveData()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -67,7 +71,7 @@ class FilterFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.btn_add_filter_approve -> {
-                rootActivity.navController.navigateUp()
+                makeQuery()
                 showSnackbar("Approveeee")
                 true
             }
@@ -96,8 +100,50 @@ class FilterFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        tv_choose_date.text = "$dayOfMonth / $month / $year"
+        tv_choose_date.text = "$dayOfMonth/${month + 1}/$year"
     }
+
+    private fun makeQuery() {
+        val time = mutableListOf<String>()
+        if (ch_time_first.isChecked) time.add(ch_time_first.text.toString())
+        if (ch_time_second.isChecked) time.add(ch_time_second.text.toString())
+        if (ch_time_third.isChecked) time.add(ch_time_third.text.toString())
+        if (ch_time_fourth.isChecked) time.add(ch_time_fourth.text.toString())
+        if (ch_time_fifth.isChecked) time.add(ch_time_fifth.text.toString())
+        if (ch_time_sixth.isChecked) time.add(ch_time_sixth.text.toString())
+        val bookedStatus =
+            if (ch_booked_priority_lower.isChecked) SEARCH_WITH_BOOKED else SEARCH_JUST_FREE
+        val floor = mutableListOf<String>()
+        if (ch_floor_13.isChecked) floor.add(ch_floor_13.text.toString())
+        if (ch_floor_14.isChecked) floor.add(ch_floor_14.text.toString())
+        if (ch_floor_15.isChecked) floor.add(ch_floor_15.text.toString())
+        val capacity = when {
+            ch_low_20.isChecked -> 20.toString()
+            ch_between_20_30.isChecked -> 30.toString()
+            else -> ch_over_30.text.toString()
+        }
+//        viewModel.getData(tv_choose_date.text.toString(), time, bookedStatus, floor, capacity)
+        viewModel.getData("11/04/2020", time, bookedStatus, floor, capacity)
+
+    }
+
+    private fun observeFilteredTimetableLiveData() =
+        viewModel.filteredTimetableLiveData.observe(viewLifecycleOwner, Observer {
+            it.let {
+                if (it.data != null) {
+                    rootActivity.navController.navigate(
+                        R.id.action_filterFragment_to_timetableFragment,
+                        bundleOf("cabinets" to it.data)
+                    )
+                }
+                if (it.error != null) {
+                    showSnackbar(getString(R.string.snackbar_error_message))
+                }
+                if (it.data == null) {
+                    showSnackbar("К сожалению, нет свободных аудиторий")
+                }
+            }
+        })
 
     private fun setUpData() {
 
@@ -107,4 +153,8 @@ class FilterFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
 
     }
 
+    companion object {
+        const val SEARCH_JUST_FREE = "FREE"
+        const val SEARCH_WITH_BOOKED = "ALL"
+    }
 }
