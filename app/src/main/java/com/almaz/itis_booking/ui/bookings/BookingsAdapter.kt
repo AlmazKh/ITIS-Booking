@@ -1,7 +1,6 @@
 package com.almaz.itis_booking.ui.bookings
 
 import android.content.Context
-import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,8 +15,10 @@ import com.almaz.itis_booking.core.model.remote.BusinessRemote
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_bookings.view.*
 
-class BookingsAdapter(private val context: Context) :
-    ListAdapter<BusinessRemote, BookingsAdapter.BookingsViewHolder>(BookingsDiffCallback()) {
+class BookingsAdapter(
+    private val context: Context,
+    private val cancelLambda: (BusinessRemote) -> Unit
+) : ListAdapter<BusinessRemote, BookingsAdapter.BookingsViewHolder>(BookingsDiffCallback()) {
 
     private var bookingsList: MutableList<BusinessRemote> = mutableListOf()
 
@@ -43,11 +44,11 @@ class BookingsAdapter(private val context: Context) :
                 setMessage("Вы уверены, что хотите отменить бронь?")
 
                 setPositiveButton("Да, отменить") { _, _ ->
+                    cancelLambda.invoke(bookingsList[holder.adapterPosition])
                     bookingsList.removeAt(holder.adapterPosition)
                     notifyItemRemoved(holder.adapterPosition)
                 }
-                setNegativeButton("Нет") { _, _ ->
-                }
+                setNegativeButton("Нет") { _, _ -> }
             }
 
             val dialog: AlertDialog = builder.create()

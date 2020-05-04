@@ -4,10 +4,8 @@ import com.almaz.itis_booking.core.model.remote.BusinessRemote
 import com.almaz.itis_booking.core.model.remote.FreeTimeRemote
 import com.almaz.itis_booking.core.model.remote.UserRemote
 import io.reactivex.Observable
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import okhttp3.ResponseBody
+import retrofit2.http.*
 
 interface BookingApi {
 
@@ -43,4 +41,9 @@ interface BookingApi {
     fun getUserBookings(
         @Query("id") id: Int
     ): Observable<List<BusinessRemote>>
+
+    @POST("/user/bookings/delete")
+    fun cancelBooking(
+        @Body id: Int
+    ): Observable<ResponseBody>
 }

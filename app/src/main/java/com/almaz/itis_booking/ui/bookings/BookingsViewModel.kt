@@ -7,6 +7,7 @@ import com.almaz.itis_booking.core.model.remote.BusinessRemote
 import com.almaz.itis_booking.ui.base.BaseViewModel
 import com.almaz.itis_booking.utils.Response
 import io.reactivex.android.schedulers.AndroidSchedulers
+import okhttp3.ResponseBody
 import javax.inject.Inject
 
 class BookingsViewModel
@@ -15,6 +16,7 @@ class BookingsViewModel
 ) : BaseViewModel() {
 
     val userBookingsLiveData = MutableLiveData<Response<List<BusinessRemote>>>()
+    val cancelBookingLiveData = MutableLiveData<Response<Boolean>>()
 
     fun updateUserBookings() {
         showLoadingLiveData.value = true
@@ -28,6 +30,19 @@ class BookingsViewModel
                     userBookingsLiveData.value = Response.success(it)
                 }, { error ->
                     userBookingsLiveData.value = Response.error(error)
+                    error.printStackTrace()
+                })
+        )
+    }
+
+    fun cancelBooking(bookingId: Int) {
+        disposables.add(
+            bookingsInteractor.cancelBooking(bookingId)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    cancelBookingLiveData.value = Response.success(true)
+                }, { error ->
+                    cancelBookingLiveData.value = Response.error(error)
                     error.printStackTrace()
                 })
         )

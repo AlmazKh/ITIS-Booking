@@ -57,10 +57,13 @@ class BookingsListFragment : BaseFragment() {
         initAdapter()
 
         observeBookingsLiveData()
+        observeCancelBookingLiveData()
     }
 
     private fun initAdapter() {
-        bookingsAdapter = BookingsAdapter(rootActivity)
+        bookingsAdapter = BookingsAdapter(rootActivity) {
+            viewModel.cancelBooking(it.id)
+        }
         rv_bookings.adapter = bookingsAdapter
         viewModel.updateUserBookings()
     }
@@ -71,6 +74,18 @@ class BookingsListFragment : BaseFragment() {
                 if (it.data != null) {
                     bookingsAdapter.submitList(it.data)
                     rv_bookings.adapter = bookingsAdapter
+                }
+                if (it.error != null) {
+                    showSnackbar(getString(R.string.snackbar_error_message))
+                }
+            }
+        })
+
+    private fun observeCancelBookingLiveData() =
+        viewModel.cancelBookingLiveData.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                if (it.data != null) {
+                    showSnackbar("Бронирование отменено")
                 }
                 if (it.error != null) {
                     showSnackbar(getString(R.string.snackbar_error_message))

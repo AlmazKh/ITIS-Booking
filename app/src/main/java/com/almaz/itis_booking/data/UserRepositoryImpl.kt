@@ -77,6 +77,14 @@ class UserRepositoryImpl
             bookingApi.getUserBookings(userId)
         )
 
+    override fun cancelBooking(bookingId: Int): Completable =
+        Completable.fromObservable(
+            bookingApi.cancelBooking(bookingId)
+                .map {
+                    it
+                }
+        )
+
     private fun mapRemoteUserToLocal(remote: UserRemote): User {
         return User(
             remote.id,
