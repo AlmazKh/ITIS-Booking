@@ -2,8 +2,8 @@ package com.almaz.itis_booking.data
 
 import com.almaz.itis_booking.core.interfaces.UserRepository
 import com.almaz.itis_booking.core.model.User
+import com.almaz.itis_booking.core.model.remote.BusinessRemote
 import com.almaz.itis_booking.core.model.remote.UserRemote
-import com.almaz.itis_booking.data.api.BookingApi
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
@@ -71,6 +71,11 @@ class UserRepositoryImpl
                 it.priority
             }
         })
+
+    override fun getUserBookings(userId: Int): Single<List<BusinessRemote>> =
+        Single.fromObservable(
+            bookingApi.getUserBookings(userId)
+        )
 
     private fun mapRemoteUserToLocal(remote: UserRemote): User {
         return User(
