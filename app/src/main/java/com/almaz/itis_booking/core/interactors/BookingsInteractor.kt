@@ -1,9 +1,6 @@
 package com.almaz.itis_booking.core.interactors
 
 import com.almaz.itis_booking.core.interfaces.UserRepository
-import com.almaz.itis_booking.core.model.Business
-import com.almaz.itis_booking.core.model.Cabinet
-import com.almaz.itis_booking.core.model.User
 import com.almaz.itis_booking.core.model.remote.BusinessRemote
 import io.reactivex.Completable
 import io.reactivex.Single

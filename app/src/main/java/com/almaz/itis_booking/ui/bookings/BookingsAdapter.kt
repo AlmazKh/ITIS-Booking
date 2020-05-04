@@ -46,6 +46,7 @@ class BookingsAdapter(
                 setPositiveButton("Да, отменить") { _, _ ->
                     cancelLambda.invoke(bookingsList[holder.adapterPosition])
                     bookingsList.removeAt(holder.adapterPosition)
+                    notifyItemRangeChanged(holder.adapterPosition, bookingsList.size)
                     notifyItemRemoved(holder.adapterPosition)
                 }
                 setNegativeButton("Нет") { _, _ -> }

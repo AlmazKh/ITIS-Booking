@@ -2,12 +2,10 @@ package com.almaz.itis_booking.ui.bookings
 
 import androidx.lifecycle.MutableLiveData
 import com.almaz.itis_booking.core.interactors.BookingsInteractor
-import com.almaz.itis_booking.core.model.Cabinet
 import com.almaz.itis_booking.core.model.remote.BusinessRemote
 import com.almaz.itis_booking.ui.base.BaseViewModel
 import com.almaz.itis_booking.utils.Response
 import io.reactivex.android.schedulers.AndroidSchedulers
-import okhttp3.ResponseBody
 import javax.inject.Inject
 
 class BookingsViewModel

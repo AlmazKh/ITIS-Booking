@@ -5,7 +5,10 @@ import com.almaz.itis_booking.core.model.remote.FreeTimeRemote
 import com.almaz.itis_booking.core.model.remote.UserRemote
 import io.reactivex.Observable
 import okhttp3.ResponseBody
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface BookingApi {
 
@@ -30,20 +33,14 @@ interface BookingApi {
     ): Observable<List<BusinessRemote>>
 
     @GET("/user")
-    fun getUserByEmail(
-        @Query("email") email: String
-    ): Observable<UserRemote>
+    fun getUserByEmail(@Query("email") email: String): Observable<UserRemote>
 
     @POST("/book")
-    fun bookCabinet(@Body businessRemote: BusinessRemote) : Observable<BusinessRemote>
+    fun bookCabinet(@Body businessRemote: BusinessRemote): Observable<BusinessRemote>
 
     @GET("/user/bookings")
-    fun getUserBookings(
-        @Query("id") id: Int
-    ): Observable<List<BusinessRemote>>
+    fun getUserBookings(@Query("id") id: Int): Observable<List<BusinessRemote>>
 
     @POST("/user/bookings/delete")
-    fun cancelBooking(
-        @Body id: Int
-    ): Observable<ResponseBody>
+    fun cancelBooking(@Body id: Int): Observable<ResponseBody>
 }
