@@ -6,7 +6,6 @@ import com.almaz.itis_booking.core.model.remote.BusinessRemote
 import com.almaz.itis_booking.core.model.remote.CabinetRemote
 import com.almaz.itis_booking.core.model.remote.FreeTimeRemote
 import com.almaz.itis_booking.core.model.remote.UserRemote
-import com.almaz.itis_booking.data.api.BookingApi
 import io.reactivex.Completable
 import io.reactivex.Single
 import javax.inject.Inject

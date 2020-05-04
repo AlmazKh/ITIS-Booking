@@ -1,6 +1,6 @@
 package com.almaz.itis_booking.di.module
 
-import com.almaz.itis_booking.data.api.BookingApi
+import com.almaz.itis_booking.data.BookingApi
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides

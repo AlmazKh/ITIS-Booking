@@ -1,4 +1,4 @@
-package com.almaz.itis_booking.data.api
+package com.almaz.itis_booking.data
 
 import com.almaz.itis_booking.core.model.remote.BusinessRemote
 import com.almaz.itis_booking.core.model.remote.FreeTimeRemote
@@ -38,4 +38,9 @@ interface BookingApi {
 
     @POST("/book")
     fun bookCabinet(@Body businessRemote: BusinessRemote) : Observable<BusinessRemote>
+
+    @GET("/user/bookings")
+    fun getUserBookings(
+        @Query("id") id: Int
+    ): Observable<List<BusinessRemote>>
 }
