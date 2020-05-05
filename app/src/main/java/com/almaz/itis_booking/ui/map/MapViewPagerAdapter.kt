@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-const val ARG_OBJECT = "OBJECT"
+const val ARG_OBJECT = "POSITION"
 
 class MapViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
@@ -15,7 +15,7 @@ class MapViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
         val fragment = FloorMap()
         fragment.arguments = Bundle().apply {
             // Our object is just an integer :-P
-            putInt(ARG_OBJECT, position + 1)
+            putInt(ARG_OBJECT, position)
         }
         return fragment
     }

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.almaz.itis_booking.App
 import com.almaz.itis_booking.R
 import com.almaz.itis_booking.ui.base.BaseFragment
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_map.*
 
@@ -40,6 +41,20 @@ class MapFragment : BaseFragment() {
                         2 -> tab.text = "15"
                     }
                 }).attach()
+
+        tabs_floor.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab?.position) {
+                    0 -> {}
+                    1 -> {}
+                    2 -> {}
+                }
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
