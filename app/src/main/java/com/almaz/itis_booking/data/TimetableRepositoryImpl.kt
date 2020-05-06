@@ -102,10 +102,21 @@ class TimetableRepositoryImpl
         return Single.fromObservable(
             bookingApi.getMapBookingCabinets(
                 date,
-                getTimeEnumNameFromValue(listOf(time)).first(),
+                getClassTimeWithCurrentTime(time),
                 floor
             )
         )
+    }
+
+    private fun getClassTimeWithCurrentTime(currentTime: String): String {
+        return when (currentTime) {
+            "10", "11" -> Time.SecondClass.name
+            "12", "13" -> Time.ThirdClass.name
+            "14", "15" -> Time.FourthClass.name
+            "16", "17" -> Time.FifthClass.name
+            "18", "19" -> Time.SixthClass.name
+            else -> Time.FirstClass.name
+        }
     }
 
     private fun getTimeEnumNameFromValue(times: List<String>): List<String> {

@@ -56,7 +56,7 @@ class MapFragment : BaseFragment() {
 
         viewModel.getData(
             getCurrentDate(),
-            "10:10 - 11:40",
+            getCurrentTime(),
             "13"
         )
 
@@ -70,21 +70,21 @@ class MapFragment : BaseFragment() {
                     0 -> {
                         viewModel.getData(
                             getCurrentDate(),
-                            "10:10 - 11:40",
+                            getCurrentTime(),
                             "13"
                         )
                     }
                     1 -> {
                         viewModel.getData(
                             getCurrentDate(),
-                            "10:10 - 11:40",
+                            getCurrentTime(),
                             "14"
                         )
                     }
                     2 -> {
                         viewModel.getData(
                             getCurrentDate(),
-                            "10:10 - 11:40",
+                            getCurrentTime(),
                             "14"
                         )
                     }
@@ -111,5 +111,11 @@ class MapFragment : BaseFragment() {
     private fun getCurrentDate(): String {
         val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.ROOT)
         return sdf.format(Date())
+    }
+
+    private fun getCurrentTime(): String {
+        val stf = SimpleDateFormat("HH", Locale.ROOT)
+        stf.timeZone = TimeZone.getTimeZone("Europe/Moscow")
+        return stf.format(Date())
     }
 }
