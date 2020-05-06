@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_background_14"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/floor_14"
+        android:scaleType="center" />
+
+    <TextView
+        android:id="@+id/tv_1401"
+        style="@style/MapCabinetTextView"
+        android:text="1401"
+        app:layout_constraintBottom_toBottomOf="@id/iv_background_14"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_14"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="@id/iv_background_14"
+        app:layout_constraintTop_toTopOf="@id/iv_background_14"
+        app:layout_constraintVertical_bias="0.839" />
+
+    <TextView
+        android:id="@+id/tv_1402"
+        style="@style/MapCabinetTextView"
+        android:text="1402"
+        app:layout_constraintBottom_toBottomOf="@id/iv_background_14"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_14"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="@id/iv_background_14"
+        app:layout_constraintTop_toTopOf="@id/iv_background_14"
+        app:layout_constraintVertical_bias="0.769" />
+
+    <TextView
+        android:id="@+id/tv_1403"
+        style="@style/MapCabinetTextView"
+        android:text="1403"
+        app:layout_constraintBottom_toBottomOf="@id/iv_background_14"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_14"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="@id/iv_background_14"
+        app:layout_constraintTop_toTopOf="@id/iv_background_14"
+        app:layout_constraintVertical_bias="0.679" />
+
+    <TextView
+        android:id="@+id/tv_1404"
+        style="@style/MapCabinetTextView"
+        android:text="1404"
+        app:layout_constraintBottom_toBottomOf="@id/iv_background_14"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_14"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="@id/iv_background_14"
+        app:layout_constraintTop_toTopOf="@id/iv_background_14"
+        app:layout_constraintVertical_bias="0.584" />
+
+    <TextView
+        android:id="@+id/tv_1405"
+        style="@style/MapCabinetTextView"
+        android:text="1405"
+        app:layout_constraintBottom_toBottomOf="@id/iv_background_14"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_14"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="@id/iv_background_14"
+        app:layout_constraintTop_toTopOf="@id/iv_background_14"
+        app:layout_constraintVertical_bias="0.526" />
+
+    <TextView
+        android:id="@+id/tv_1406"
+        style="@style/MapCabinetTextView"
+        android:text="1406"
+        app:layout_constraintBottom_toBottomOf="@id/iv_background_14"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_14"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="@id/iv_background_14"
+        app:layout_constraintTop_toTopOf="@id/iv_background_14"
+        app:layout_constraintVertical_bias="0.436" />
+
+    <TextView
+        android:id="@+id/tv_1407"
+        style="@style/MapCabinetTextView"
+        android:text="1407"
+        app:layout_constraintBottom_toBottomOf="@id/iv_background_14"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_14"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="@id/iv_background_14"
+        app:layout_constraintTop_toTopOf="@id/iv_background_14"
+        app:layout_constraintVertical_bias="0.301" />
+
+    <TextView
+        android:id="@+id/tv_1408"
+        style="@style/MapCabinetTextView"
+        android:text="1408"
+        app:layout_constraintBottom_toBottomOf="@id/iv_background_14"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_14"
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintStart_toStartOf="@id/iv_background_14"
+        app:layout_constraintTop_toTopOf="@id/iv_background_14"
+        app:layout_constraintVertical_bias="0.062" />
+
+    <TextView
+        android:id="@+id/tv_1409"
+        style="@style/MapCabinetTextView"
+        android:text="1409"
+        app:layout_constraintBottom_toBottomOf="@id/iv_background_14"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_14"
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintStart_toStartOf="@id/iv_background_14"
+        app:layout_constraintTop_toTopOf="@id/iv_background_14"
+        app:layout_constraintVertical_bias="0.194" />
+
+    <TextView
+        android:id="@+id/tv_1410"
+        style="@style/MapCabinetTextView"
+        android:text="1410"
+        app:layout_constraintBottom_toBottomOf="@id/iv_background_14"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_14"
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintStart_toStartOf="@id/iv_background_14"
+        app:layout_constraintTop_toTopOf="@id/iv_background_14"
+        app:layout_constraintVertical_bias="0.317" />
+
+    <TextView
+        android:id="@+id/tv_1411"
+        style="@style/MapCabinetTextView"
+        android:text="1411"
+        app:layout_constraintBottom_toBottomOf="@id/iv_background_14"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_14"
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintStart_toStartOf="@id/iv_background_14"
+        app:layout_constraintTop_toTopOf="@id/iv_background_14"
+        app:layout_constraintVertical_bias="0.468" />
+
+    <TextView
+        android:id="@+id/tv_1412"
+        style="@style/MapCabinetTextView"
+        android:text="1412"
+        app:layout_constraintBottom_toBottomOf="@id/iv_background_14"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_14"
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintStart_toStartOf="@id/iv_background_14"
+        app:layout_constraintTop_toTopOf="@id/iv_background_14"
+        app:layout_constraintVertical_bias="0.608" />
+
+    <TextView
+        android:id="@+id/tv_1413"
+        style="@style/MapCabinetTextView"
+        android:text="1413"
+        app:layout_constraintBottom_toBottomOf="@id/iv_background_14"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_14"
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintStart_toStartOf="@id/iv_background_14"
+        app:layout_constraintTop_toTopOf="@id/iv_background_14"
+        app:layout_constraintVertical_bias="0.696" />
+
+    <TextView
+        android:id="@+id/tv_1414"
+        style="@style/MapCabinetTextView"
+        android:text="1414"
+        app:layout_constraintBottom_toBottomOf="@id/iv_background_14"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_14"
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintStart_toStartOf="@id/iv_background_14"
+        app:layout_constraintTop_toTopOf="@id/iv_background_14"
+        app:layout_constraintVertical_bias="0.769" />
+</androidx.constraintlayout.widget.ConstraintLayout>

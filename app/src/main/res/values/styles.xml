@@ -28,4 +28,14 @@
         <item name="android:layout_marginEnd">@dimen/spacing_normal_16</item>
         <item name="android:background">@color/colorDividerColor</item>
     </style>
+
+    <style name="MapCabinetTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/map_cabinet_lock_background</item>
+        <item name="android:paddingStart">@dimen/spacing_tiny_4</item>
+        <item name="android:paddingEnd">@dimen/spacing_tiny_4</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/font_medium_20</item>
+    </style>
 </resources>

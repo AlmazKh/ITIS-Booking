@@ -4,12 +4,131 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.almaz.itis_booking.ui.map.CustomFloor13
-        android:id="@+id/custom_floor_13"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_background_13"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:background="@drawable/floor_13"
+        android:scaleType="center" />
+
+    <TextView
+        android:id="@+id/tv_1301"
+        style="@style/MapCabinetTextView"
+        android:text="1301"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_background_13"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_13"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="@id/iv_background_13"
+        app:layout_constraintTop_toTopOf="@id/iv_background_13"
+        app:layout_constraintVertical_bias="0.804" />
+
+    <TextView
+        android:id="@+id/tv_1302"
+        style="@style/MapCabinetTextView"
+        android:text="1302"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_background_13"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_13"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="@id/iv_background_13"
+        app:layout_constraintTop_toTopOf="@id/iv_background_13"
+        app:layout_constraintVertical_bias="0.679" />
+
+    <TextView
+        android:id="@+id/tv_1303"
+        style="@style/MapCabinetTextView"
+        android:text="1303"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_background_13"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_13"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="@id/iv_background_13"
+        app:layout_constraintTop_toTopOf="@id/iv_background_13"
+        app:layout_constraintVertical_bias="0.554" />
+
+    <TextView
+        android:id="@+id/tv_1304"
+        style="@style/MapCabinetTextView"
+        android:text="1304"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_background_13"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_13"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="@id/iv_background_13"
+        app:layout_constraintTop_toTopOf="@id/iv_background_13"
+        app:layout_constraintVertical_bias="0.43" />
+
+    <TextView
+        android:id="@+id/tv_1305"
+        style="@style/MapCabinetTextView"
+        android:text="1305"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_background_13"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_13"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="@id/iv_background_13"
+        app:layout_constraintTop_toTopOf="@id/iv_background_13"
+        app:layout_constraintVertical_bias="0.295" />
+
+    <TextView
+        android:id="@+id/tv_1306"
+        style="@style/MapCabinetTextView"
+        android:text="1306"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_background_13"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_13"
+        app:layout_constraintHorizontal_bias="0.775"
+        app:layout_constraintStart_toStartOf="@id/iv_background_13"
+        app:layout_constraintTop_toTopOf="@id/iv_background_13"
+        app:layout_constraintVertical_bias="0.068" />
+
+    <TextView
+        android:id="@+id/tv_1307"
+        style="@style/MapCabinetTextView"
+        android:text="1307"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_background_13"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_13"
+        app:layout_constraintHorizontal_bias="0.775"
+        app:layout_constraintStart_toStartOf="@id/iv_background_13"
+        app:layout_constraintTop_toTopOf="@id/iv_background_13"
+        app:layout_constraintVertical_bias="0.197" />
+
+    <TextView
+        android:id="@+id/tv_1308"
+        style="@style/MapCabinetTextView"
+        android:text="1308"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_background_13"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_13"
+        app:layout_constraintHorizontal_bias="0.775"
+        app:layout_constraintStart_toStartOf="@id/iv_background_13"
+        app:layout_constraintTop_toTopOf="@id/iv_background_13"
+        app:layout_constraintVertical_bias="0.313" />
+
+    <TextView
+        android:id="@+id/tv_1309"
+        style="@style/MapCabinetTextView"
+        android:text="1309"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_background_13"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_13"
+        app:layout_constraintHorizontal_bias="0.775"
+        app:layout_constraintStart_toStartOf="@id/iv_background_13"
+        app:layout_constraintTop_toTopOf="@id/iv_background_13"
+        app:layout_constraintVertical_bias="0.43" />
+
+    <TextView
+        android:id="@+id/tv_1310"
+        style="@style/MapCabinetTextView"
+        android:text="1310"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_background_13"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_13"
+        app:layout_constraintHorizontal_bias="0.775"
+        app:layout_constraintStart_toStartOf="@id/iv_background_13"
+        app:layout_constraintTop_toTopOf="@id/iv_background_13"
+        app:layout_constraintVertical_bias="0.555" />
+
+    <TextView
+        android:id="@+id/tv_1311"
+        style="@style/MapCabinetTextView"
+        android:text="1311"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_background_13"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_13"
+        app:layout_constraintHorizontal_bias="0.775"
+        app:layout_constraintStart_toStartOf="@id/iv_background_13"
+        app:layout_constraintTop_toTopOf="@id/iv_background_13"
+        app:layout_constraintVertical_bias="0.712" />
 </androidx.constraintlayout.widget.ConstraintLayout>
