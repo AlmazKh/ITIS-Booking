@@ -3,14 +3,23 @@ package com.almaz.itis_booking.ui.map
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.almaz.itis_booking.App
 import com.almaz.itis_booking.R
 import com.almaz.itis_booking.ui.base.BaseFragment
+import com.almaz.itis_booking.utils.ViewModelFactory
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_map.*
+import java.text.SimpleDateFormat
+import java.util.*
+import javax.inject.Inject
 
 class MapFragment : BaseFragment() {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+    private lateinit var viewModel: MapViewModel
 
     private lateinit var mapViewPagerAdapter: MapViewPagerAdapter
 
@@ -33,6 +42,9 @@ class MapFragment : BaseFragment() {
         mapViewPagerAdapter = MapViewPagerAdapter(this)
         vp_map.adapter = mapViewPagerAdapter
 
+        viewModel = ViewModelProvider(rootActivity, this.viewModelFactory)
+            .get(MapViewModel::class.java)
+
         TabLayoutMediator(tabs_floor, vp_map,
                 TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                     when(position) {
@@ -42,6 +54,12 @@ class MapFragment : BaseFragment() {
                     }
                 }).attach()
 
+        viewModel.getData(
+            getCurrentDate(),
+            "10:10 - 11:40",
+            "13"
+        )
+
         tabs_floor.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {}
 
@@ -49,9 +67,27 @@ class MapFragment : BaseFragment() {
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab?.position) {
-                    0 -> {}
-                    1 -> {}
-                    2 -> {}
+                    0 -> {
+                        viewModel.getData(
+                            getCurrentDate(),
+                            "10:10 - 11:40",
+                            "13"
+                        )
+                    }
+                    1 -> {
+                        viewModel.getData(
+                            getCurrentDate(),
+                            "10:10 - 11:40",
+                            "14"
+                        )
+                    }
+                    2 -> {
+                        viewModel.getData(
+                            getCurrentDate(),
+                            "10:10 - 11:40",
+                            "14"
+                        )
+                    }
                 }
             }
         })
@@ -72,7 +108,8 @@ class MapFragment : BaseFragment() {
         }
     }
 
-    companion object {
-        fun newInstance() = MapFragment()
+    private fun getCurrentDate(): String {
+        val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.ROOT)
+        return sdf.format(Date())
     }
 }

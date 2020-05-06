@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.almaz.itis_booking.ui.bookings.BookingsViewModel
 import com.almaz.itis_booking.ui.login.LoginViewModel
 import com.almaz.itis_booking.ui.main.MainViewModel
+import com.almaz.itis_booking.ui.map.MapViewModel
 import com.almaz.itis_booking.ui.profile.ProfileViewModel
 import com.almaz.itis_booking.ui.timetable.CabinetViewModel
 import com.almaz.itis_booking.ui.timetable.FilterViewModel
@@ -51,6 +52,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(BookingsViewModel::class)
     abstract fun bindBookingsViewModel(bookingsViewModel: BookingsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MapViewModel::class)
+    abstract fun bindMapViewModel(mapViewModel: MapViewModel): ViewModel
 }
 
 @Target(

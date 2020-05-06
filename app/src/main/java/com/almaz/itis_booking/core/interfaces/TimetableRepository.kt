@@ -17,4 +17,9 @@ interface TimetableRepository {
         priority: Int
     ): Single<List<Cabinet>>
     fun bookCabinet(user: User, cabinet: Cabinet, time: String): Completable
+    fun getDataForMapWithFilter(
+        date: String,
+        time: String,
+        floor: String
+    ): Single<List<String>>
 }

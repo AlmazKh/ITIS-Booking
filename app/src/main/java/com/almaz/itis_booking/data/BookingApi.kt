@@ -43,4 +43,11 @@ interface BookingApi {
 
     @POST("/user/bookings/delete")
     fun cancelBooking(@Body id: Int): Observable<ResponseBody>
+
+    @GET("/map")
+    fun getMapBookingCabinets(
+        @Query("date") date: String,
+        @Query("time") time: String,
+        @Query("floor") floor: String
+    ): Observable<List<String>>
 }

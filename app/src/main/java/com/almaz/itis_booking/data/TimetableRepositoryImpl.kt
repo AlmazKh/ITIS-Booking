@@ -94,6 +94,19 @@ class TimetableRepositoryImpl
         )
     }
 
+    override fun getDataForMapWithFilter(
+        date: String,
+        time: String,
+        floor: String
+    ): Single<List<String>> {
+        return Single.fromObservable(
+            bookingApi.getMapBookingCabinets(
+                date,
+                getTimeEnumNameFromValue(listOf(time)).first(),
+                floor
+            )
+        )
+    }
 
     private fun getTimeEnumNameFromValue(times: List<String>): List<String> {
         val list: MutableList<String> = mutableListOf()
