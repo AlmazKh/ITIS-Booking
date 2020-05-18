@@ -16,11 +16,6 @@
         android:title="@string/timetable_page_title" />
 
     <item
-        android:id="@+id/notificationFragment"
-        android:icon="@drawable/notification_btn_icon"
-        android:title="@string/notification_page_title" />
-
-    <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/profile_btn_icon"
         android:title="@string/profile_page_title" />
