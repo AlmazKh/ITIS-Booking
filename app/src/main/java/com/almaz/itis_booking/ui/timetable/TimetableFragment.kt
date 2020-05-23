@@ -12,6 +12,8 @@ import com.almaz.itis_booking.R
 import com.almaz.itis_booking.ui.base.BaseFragment
 import com.almaz.itis_booking.utils.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_timetable.*
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 class TimetableFragment : BaseFragment() {
@@ -44,7 +46,7 @@ class TimetableFragment : BaseFragment() {
         rv_timetable.apply {
             layoutManager = LinearLayoutManager(rootView.context)
         }
-        viewModel = ViewModelProvider(this, this.viewModelFactory)
+        viewModel = ViewModelProvider(rootActivity, this.viewModelFactory)
             .get(TimetableViewModel::class.java)
 
         setToolbarAndBottomNavVisibility(
@@ -58,6 +60,7 @@ class TimetableFragment : BaseFragment() {
         initAdapter()
 
         observeShowLoadingLiveData()
+        observeFilterState()
         observeTimetableLiveData()
         observeCabinetClickLiveData()
     }
@@ -67,20 +70,12 @@ class TimetableFragment : BaseFragment() {
             viewModel.onCabinetClick(it)
         }
         rv_timetable.adapter = timetableAdapter
-        if (arguments != null) {
-            if (!arguments?.isEmpty!!) {
-                timetableAdapter.submitList(arguments?.getParcelableArrayList("cabinets"))
-                rv_timetable.adapter = timetableAdapter
-            } else {
-                viewModel.updateTimetable(getCurrentDate())
-            }
-        } else {
-            viewModel.updateTimetable(getCurrentDate())
-        }
     }
 
     private fun refreshTimetable() {
-        viewModel.updateTimetable(getCurrentDate())
+        if (viewModel.filterState.value == TimetableViewModel.FilterState.DISABLED) {
+            viewModel.updateTimetable(getCurrentDate())
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -91,7 +86,9 @@ class TimetableFragment : BaseFragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.filter -> {
-                rootActivity.navController.navigate(R.id.action_timetableFragment_to_filterFragment)
+                rootActivity.navController.navigate(
+                    R.id.action_timetableFragment_to_filterFragment
+                )
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -99,9 +96,18 @@ class TimetableFragment : BaseFragment() {
     }
 
     private fun getCurrentDate(): String {
-        return "11/04/2020"
-//       return DateFormat.getDateInstance(DateFormat.SHORT).format(Calendar.getInstance().time)
+        val pattern = "dd.MM.yyyy"
+        return SimpleDateFormat(pattern).format(Calendar.getInstance().time)
     }
+
+    private fun observeFilterState() =
+        viewModel.filterState.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                if (it == TimetableViewModel.FilterState.DISABLED) {
+                    viewModel.updateTimetable(getCurrentDate())
+                }
+            }
+        })
 
     private fun observeTimetableLiveData() =
         viewModel.timetableLiveData.observe(viewLifecycleOwner, Observer {
@@ -112,6 +118,9 @@ class TimetableFragment : BaseFragment() {
                 }
                 if (it.error != null) {
                     showSnackbar(getString(R.string.snackbar_error_message))
+                }
+                if (it.data == null) {
+                    showSnackbar("К сожалению, нет свободных аудиторий")
                 }
             }
         })

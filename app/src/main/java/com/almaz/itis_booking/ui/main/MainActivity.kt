@@ -45,9 +45,13 @@ class MainActivity : BaseActivity() {
 
     private fun observeIsLoginedLiveData() =
         viewModel.isLoginedLiveData.observe(this, Observer { response ->
-            if (response.data != null) {
+            if (response?.data != null) {
                 if (response.data) {
-                    navController.navigate(R.id.action_loginFragment_to_timetableFragment)
+                    try {
+                        navController.navigate(R.id.action_loginFragment_to_timetableFragment)
+                    } catch (ex: IllegalArgumentException) {
+                        navController.navigate(R.id.timetableFragment)
+                    }
                 } else {
                     navController.navigate(R.id.loginFragment)
                 }

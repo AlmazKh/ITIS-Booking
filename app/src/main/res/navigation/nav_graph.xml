@@ -59,11 +59,6 @@
             android:id="@+id/action_timetableFragment_to_filterFragment"
             app:destination="@id/filterFragment"
             app:popUpTo="@id/timetableFragment" />
-
-        <argument
-            android:name="arg_cabinets"
-            app:argType="com.almaz.itis_booking.core.model.Cabinet[]"
-            app:nullable="true" />
     </fragment>
 
     <fragment
