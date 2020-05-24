@@ -21,6 +21,14 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:titleTextColor="@color/colorPrimaryDark">
 
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="@dimen/spacing_normal_16"
+            android:background="@drawable/ic_arrow_back_black_24dp"
+            android:visibility="gone" />
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_toolbar_logo"
             android:layout_width="wrap_content"

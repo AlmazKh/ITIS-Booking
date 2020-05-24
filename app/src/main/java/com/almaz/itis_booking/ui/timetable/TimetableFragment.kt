@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.almaz.itis_booking.App
 import com.almaz.itis_booking.R
+import com.almaz.itis_booking.core.model.Cabinet
 import com.almaz.itis_booking.ui.base.BaseFragment
 import com.almaz.itis_booking.utils.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_timetable.*
@@ -53,7 +54,6 @@ class TimetableFragment : BaseFragment() {
             toolbarVisibility = View.VISIBLE,
             bottomNavVisibility = View.VISIBLE
         )
-        setArrowToolbarVisibility(false)
         setToolbarLogoVisibility(View.VISIBLE)
         setToolbarTitle("Booking")
 
@@ -62,12 +62,11 @@ class TimetableFragment : BaseFragment() {
         observeShowLoadingLiveData()
         observeFilterState()
         observeTimetableLiveData()
-        observeCabinetClickLiveData()
     }
 
     private fun initAdapter() {
         timetableAdapter = TimetableAdapter {
-            viewModel.onCabinetClick(it)
+            onCabinetClick(it)
         }
         rv_timetable.adapter = timetableAdapter
     }
@@ -125,20 +124,12 @@ class TimetableFragment : BaseFragment() {
             }
         })
 
-    private fun observeCabinetClickLiveData() =
-        viewModel.cabinetClickLiveData.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                if (it.data != null) {
-                    rootActivity.navController.navigate(
-                        R.id.action_timetableFragment_to_cabinetFragment,
-                        bundleOf("cabinet" to it.data)
-                    )
-                }
-                if (it.error != null) {
-                    showSnackbar(getString(R.string.snackbar_error_message))
-                }
-            }
-        })
+    private fun onCabinetClick(cabinet: Cabinet) {
+        rootActivity.navController.navigate(
+            R.id.action_timetableFragment_to_cabinetFragment,
+            bundleOf("cabinet" to cabinet)
+        )
+    }
 
     private fun observeShowLoadingLiveData() =
         viewModel.showLoadingLiveData.observe(viewLifecycleOwner, Observer {

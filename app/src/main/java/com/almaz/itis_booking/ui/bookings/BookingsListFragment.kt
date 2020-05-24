@@ -50,7 +50,6 @@ class BookingsListFragment : BaseFragment() {
             toolbarVisibility = View.VISIBLE,
             bottomNavVisibility = View.VISIBLE
         )
-        setArrowToolbarVisibility(false)
         setToolbarLogoVisibility(View.VISIBLE)
         setToolbarTitle("Ваши бронирования")
 

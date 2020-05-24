@@ -21,7 +21,6 @@ class TimetableViewModel
     val filterStateData = MutableLiveData<FilterStateData>()
     val filterState = MutableLiveData<FilterState>()
     val timetableLiveData = MutableLiveData<Response<List<Cabinet>>>()
-    val cabinetClickLiveData = MutableLiveData<Response<Cabinet>>()
 
     init {
         filterState.value = FilterState.DISABLED
@@ -42,10 +41,6 @@ class TimetableViewModel
                     error.printStackTrace()
                 })
         )
-    }
-
-    fun onCabinetClick(cabinet: Cabinet) {
-        cabinetClickLiveData.value = Response.success(cabinet)
     }
 
     fun getData(

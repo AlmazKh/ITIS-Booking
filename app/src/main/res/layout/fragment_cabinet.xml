@@ -82,7 +82,7 @@
             android:fontFamily="@font/roboto_medium"
             android:text="Забронировать"
             android:textAllCaps="false"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@android:color/white"
             android:textSize="@dimen/font_large_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

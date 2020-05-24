@@ -49,13 +49,11 @@ class CabinetFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setHasOptionsMenu(true)
-
         setToolbarAndBottomNavVisibility(
             toolbarVisibility = View.VISIBLE,
             bottomNavVisibility = View.GONE
         )
-        setArrowToolbarVisibility(true)
+        setArrowToolbarVisibility(View.VISIBLE)
         setToolbarTitle("Бронирование")
         setToolbarLogoVisibility(logoVisibility = View.GONE)
 
@@ -155,4 +153,9 @@ class CabinetFragment : BaseFragment() {
                 }
             }
         })
+
+    override fun onDestroy() {
+        super.onDestroy()
+        setArrowToolbarVisibility(View.GONE)
+    }
 }

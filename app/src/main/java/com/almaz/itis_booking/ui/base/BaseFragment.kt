@@ -1,14 +1,11 @@
 package com.almaz.itis_booking.ui.base
 
 import android.content.Context
-import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.almaz.itis_booking.R
 import com.almaz.itis_booking.ui.main.MainActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
 
 open class BaseFragment : Fragment() {
     lateinit var rootActivity: MainActivity
@@ -18,19 +15,13 @@ open class BaseFragment : Fragment() {
         rootActivity = activity as MainActivity
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                rootActivity.onBackPressed()
+    fun setArrowToolbarVisibility(visibility: Int) {
+        rootActivity.btn_back.visibility = visibility
+        if (visibility == View.VISIBLE) {
+            rootActivity.btn_back.setOnClickListener {
+                rootActivity.navController.popBackStack()
             }
         }
-        return super.onOptionsItemSelected(item)
-    }
-
-    fun setArrowToolbarVisibility(show: Boolean) {
-        rootActivity.supportActionBar?.setDisplayHomeAsUpEnabled(show)
-//        rootActivity.actionBar?.setDisplayHomeAsUpEnabled(show)
-//        rootActivity.actionBar?.setDisplayShowHomeEnabled(show)
     }
 
     fun setToolbarTitle(title: String) {
@@ -38,7 +29,6 @@ open class BaseFragment : Fragment() {
     }
 
     fun setToolbarLogoVisibility(logoVisibility: Int) {
-//        rootActivity.toolbar.logo = if (show) R.drawable.logo_kfu else null
         rootActivity.iv_toolbar_logo.visibility = logoVisibility
     }
 
