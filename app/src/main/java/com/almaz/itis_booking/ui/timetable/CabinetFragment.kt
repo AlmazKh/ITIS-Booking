@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -62,11 +64,8 @@ class CabinetFragment : BaseFragment() {
         observeCabinetBookedLiveData()
 
         btn_booking.setOnClickListener {
-            arguments?.getParcelable<Cabinet>("cabinet")?.let { it1 ->
-                viewModel.bookCabinet(
-                    it1,
-                    spinner_cabinet_free_time.selectedItem as String
-                )
+            arguments?.getParcelable<Cabinet>("cabinet")?.let { cabinet ->
+                showBookingDialog(cabinet)
             }
         }
 
@@ -89,8 +88,9 @@ class CabinetFragment : BaseFragment() {
     private fun setUpData() {
         tv_cabinet_number.text = arguments?.getParcelable<Cabinet>("cabinet")?.number
         tv_cabinet_capacity_value.text = arguments?.getParcelable<Cabinet>("cabinet")?.capacity
-        tv_cabinet_status_addition.text =
-            arguments?.getParcelable<Cabinet>("cabinet")?.statusAddition
+        tv_date_value.text = arguments?.getParcelable<Cabinet>("cabinet")?.business?.first()?.date
+//        tv_cabinet_status_addition.text =
+//            arguments?.getParcelable<Cabinet>("cabinet")?.statusAddition
 
         val business =
             mapCabinetBusinessIntoStringTime(arguments?.getParcelable<Cabinet>("cabinet")?.business)
@@ -101,6 +101,37 @@ class CabinetFragment : BaseFragment() {
             btn_booking.isActivated = false
             showSnackbar("No free time")
         }
+    }
+
+    private fun showBookingDialog(cabinet: Cabinet) {
+        val builder = AlertDialog.Builder(rootActivity)
+        with(builder) {
+            setTitle("Подтверждение бронирования")
+            setMessage(
+                "Детали бронирования: \n" +
+                        "Аудитория № ${cabinet.number}\n" +
+                        "Дата: ${cabinet.business.first().date} \n" +
+                        "Время: ${spinner_cabinet_free_time.selectedItem}"
+            )
+
+            setPositiveButton("Забронировать") { _, _ ->
+                viewModel.bookCabinet(
+                    cabinet = cabinet,
+                    time = spinner_cabinet_free_time.selectedItem as String
+                )
+            }
+            setNegativeButton("Отмена") { _, _ -> }
+        }
+
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+        val btnPositive = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+        val btnNegative = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+
+        val layoutParams = btnPositive.layoutParams as LinearLayout.LayoutParams
+        layoutParams.weight = 10f
+        btnPositive.layoutParams = layoutParams
+        btnNegative.layoutParams = layoutParams
     }
 
     private fun mapCabinetBusinessIntoStringTime(business: List<Business>?): MutableList<String>? {
