@@ -43,22 +43,28 @@
 
         <TextView
             android:id="@+id/tv_cabinet_status_addition"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_normal_16"
             android:layout_marginTop="@dimen/spacing_normal_16"
             android:layout_marginEnd="@dimen/spacing_normal_16"
             app:layout_constraintStart_toStartOf="parent"
             style="@style/BaseText"
-            android:layout_marginBottom="@dimen/spacing_tiny_4"
+            android:layout_marginBottom="@dimen/spacing_small_8"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_cabinet_capacity_title" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_cabinet_status"
-            android:layout_width="64dp"
-            android:layout_height="24dp"
+        <TextView
+            android:id="@+id/tv_cabinet_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/spacing_large_24"
+            android:paddingStart="@dimen/spacing_tiny_4"
+            android:paddingEnd="@dimen/spacing_tiny_4"
+            android:text="Свободно"
+            android:background="@drawable/map_cabinet_free_background"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_medium_20"
             app:layout_constraintBottom_toBottomOf="@+id/tv_cabinet_number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_cabinet_number" />

@@ -39,12 +39,14 @@ class TimetableAdapter(
             itemView.tv_cabinet_status_addition.text = cabinet.statusAddition
             when (business.status) {
                 Status.Free -> {
-                    itemView.iv_cabinet_status.background = containerView.resources
-                        .getDrawable(R.drawable.cabinet_status_free, null)
+                    itemView.tv_cabinet_status.text = "Свободно"
+                    itemView.tv_cabinet_status.background =
+                        containerView.resources.getDrawable(R.drawable.map_cabinet_free_background, null)
                 }
                 Status.Booked -> {
-                    itemView.iv_cabinet_status.background = containerView.resources
-                        .getDrawable(R.drawable.cabinet_status_booked, null)
+                    itemView.tv_cabinet_status.text = "Забронировано"
+                    itemView.tv_cabinet_status.background =
+                        containerView.resources.getDrawable(R.drawable.map_cabinet_booked_background, null)
                 }
             }
         }
