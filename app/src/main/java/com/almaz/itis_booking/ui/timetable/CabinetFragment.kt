@@ -79,8 +79,17 @@ class CabinetFragment : BaseFragment() {
                     position: Int,
                     id: Long
                 ) {
-                        parent?.getItemAtPosition(position).toString()
-
+                    val item = parent?.getItemAtPosition(position).toString()
+                    val business = arguments?.getParcelable<Cabinet>("cabinet")?.business
+                    if (business?.get(position)?.status == Status.Booked) {
+                        tv_cabinet_status.text = "Забронировано"
+                        tv_cabinet_status.background =
+                            resources.getDrawable(R.drawable.map_cabinet_booked_background, null)
+                    } else {
+                        tv_cabinet_status.text = "Свободно"
+                        tv_cabinet_status.background =
+                            resources.getDrawable(R.drawable.map_cabinet_free_background, null)
+                    }
                 }
             }
     }
@@ -138,7 +147,7 @@ class CabinetFragment : BaseFragment() {
         val list: MutableList<String>? = mutableListOf()
         if (business != null) {
             for (item in business) {
-                if (item.status == Status.Free) {
+//                if (item.status == Status.Free) {
                     when (item.time) {
                         Time.FirstClass -> list?.add(Time.FirstClass.getStringTime())
                         Time.SecondClass -> list?.add(Time.SecondClass.getStringTime())
@@ -147,7 +156,7 @@ class CabinetFragment : BaseFragment() {
                         Time.FifthClass -> list?.add(Time.FifthClass.getStringTime())
                         Time.SixthClass -> list?.add(Time.SixthClass.getStringTime())
                     }
-                }
+//                }
             }
         }
         return list
