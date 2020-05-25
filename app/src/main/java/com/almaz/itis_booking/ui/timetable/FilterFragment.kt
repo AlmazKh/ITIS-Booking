@@ -135,8 +135,8 @@ class FilterFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
                             ch_over_30.isChecked = false
                         }
                         "30" -> {
-                            ch_low_20.isChecked = true
-                            ch_between_20_30.isChecked = false
+                            ch_low_20.isChecked = false
+                            ch_between_20_30.isChecked = true
                             ch_over_30.isChecked = false
                         }
                         else -> {
