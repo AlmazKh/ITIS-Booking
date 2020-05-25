@@ -144,7 +144,11 @@ class TimetableRepositoryImpl
                 elt.cabinet.id,
                 elt.cabinet.number,
                 elt.cabinet.capacity,
-                null,
+                createAddition(
+                    cabinetId = elt.cabinet.id,
+                    listFreeTime = remote,
+                    listBusiness = null
+                ),
                 getCabinetBusinessFreeTimeList(elt.cabinet.id, remote)
             ))
             set.add(elt.cabinet.id)
@@ -182,8 +186,9 @@ class TimetableRepositoryImpl
                     business.cabinet.number.toString(),
                     business.cabinet.capacity.toString(),
                     createAddition(
-                        business.cabinet.id,
-                        remote
+                        cabinetId = business.cabinet.id,
+                        listFreeTime = null,
+                        listBusiness = remote
                     ),
                         getCabinetBusinessList(
                             business.cabinet.id,
@@ -218,7 +223,7 @@ class TimetableRepositoryImpl
             remote.name,
             remote.institute,
             remote.groupNumber,
-            remote.priority.toString(),
+            priorityHolder.getPriorityNameByValue(remote.priority),
             remote.email,
             remote.photo
         )
@@ -226,14 +231,24 @@ class TimetableRepositoryImpl
 
     private fun createAddition(
         cabinetId: Int,
-        list: List<BusinessRemote>
+        listBusiness: List<BusinessRemote>?,
+        listFreeTime: List<FreeTimeRemote>?
     ): String {
-        list.filter { it.cabinet.id == cabinetId }
-            .forEach {
-                if (it.status == Status.Free.toString()) {
-                    return "Аудитория свободна в ${Time.valueOf(it.time).getStringTime()}"
-            }
+
+        listBusiness?.let { list ->
+            list.filter { it.cabinet.id == cabinetId }
+                .forEach {
+                    if (it.status == Status.Free.toString()) {
+                        return "Аудитория свободна в ${Time.valueOf(it.time).getStringTime()}"
+                    }
+                }
         }
-        return "Всё занято, но ваш приоритет позволяет пребить бронь"
+        listFreeTime?.let { list ->
+            list.filter { it.cabinet.id == cabinetId }
+                .forEach {
+                    return "Аудитория свободна в ${Time.valueOf(it.time).getStringTime()}"
+                }
+        }
+        return "Аудитория забронирована, но ваш приоритет позволяет пребить бронь"
     }
 }

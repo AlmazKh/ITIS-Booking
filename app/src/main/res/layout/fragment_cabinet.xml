@@ -35,25 +35,6 @@
             app:layout_constraintStart_toEndOf="@id/tv_cabinet_capacity_title"
             app:layout_constraintTop_toTopOf="@id/tv_cabinet_capacity_title" />
 
-       <!-- <TextView
-            android:id="@+id/tv_cabinet_status_addition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_normal_16"
-            android:layout_marginTop="@dimen/spacing_normal_16"
-            app:layout_constraintStart_toStartOf="parent"
-            style="@style/BaseText"
-            app:layout_constraintTop_toBottomOf="@id/tv_cabinet_capacity_title" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_cabinet_status"
-            android:layout_width="64dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="@dimen/spacing_large_24"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_cabinet_number"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_cabinet_number" />-->
-
         <TextView
             android:id="@+id/tv_cabinet_status"
             android:layout_width="wrap_content"
@@ -91,17 +72,29 @@
             app:layout_constraintStart_toEndOf="@id/tv_date_title"
             app:layout_constraintTop_toBottomOf="@id/tv_cabinet_capacity_title" />
 
+        <TextView
+            android:id="@+id/tv_cabinet_status_addition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_normal_16"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            android:layout_marginTop="@dimen/spacing_normal_16"
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/BaseText"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/tv_date_title" />
+
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinner_cabinet_free_time"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginTop="@dimen/spacing_huge_32"
+            android:layout_marginTop="@dimen/spacing_normal_16"
             android:layout_marginStart="@dimen/spacing_normal_16"
             android:layout_marginEnd="@dimen/spacing_normal_16"
             android:background="@drawable/background_outlined_rectangle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_date_title" />
+            app:layout_constraintTop_toBottomOf="@id/tv_cabinet_status_addition" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_booking"

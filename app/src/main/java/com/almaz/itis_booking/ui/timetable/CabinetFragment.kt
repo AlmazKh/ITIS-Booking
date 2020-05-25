@@ -85,10 +85,17 @@ class CabinetFragment : BaseFragment() {
                         tv_cabinet_status.text = "Забронировано"
                         tv_cabinet_status.background =
                             resources.getDrawable(R.drawable.map_cabinet_booked_background, null)
+                        tv_cabinet_status_addition.visibility = View.VISIBLE
+                        tv_cabinet_status_addition.text =
+                            "Пользователь ${business[position].user?.name} " +
+                                    " c приоритетом \"${business[position].user?.priority}\"" +
+                                    " забронировал аудиторию на данное время." +
+                                    " Если это крайне необходимо, ваш статус позволяет перебить бронь"
                     } else {
                         tv_cabinet_status.text = "Свободно"
                         tv_cabinet_status.background =
                             resources.getDrawable(R.drawable.map_cabinet_free_background, null)
+                        tv_cabinet_status_addition.visibility = View.GONE
                     }
                 }
             }
@@ -98,8 +105,6 @@ class CabinetFragment : BaseFragment() {
         tv_cabinet_number.text = arguments?.getParcelable<Cabinet>("cabinet")?.number
         tv_cabinet_capacity_value.text = arguments?.getParcelable<Cabinet>("cabinet")?.capacity
         tv_date_value.text = arguments?.getParcelable<Cabinet>("cabinet")?.business?.first()?.date
-//        tv_cabinet_status_addition.text =
-//            arguments?.getParcelable<Cabinet>("cabinet")?.statusAddition
 
         val business =
             mapCabinetBusinessIntoStringTime(arguments?.getParcelable<Cabinet>("cabinet")?.business)
@@ -108,7 +113,7 @@ class CabinetFragment : BaseFragment() {
         } else {
             spinner_cabinet_free_time.visibility = View.GONE
             btn_booking.isActivated = false
-            showSnackbar("No free time")
+            showSnackbar("Аудитория занята")
         }
     }
 
@@ -147,7 +152,6 @@ class CabinetFragment : BaseFragment() {
         val list: MutableList<String>? = mutableListOf()
         if (business != null) {
             for (item in business) {
-//                if (item.status == Status.Free) {
                     when (item.time) {
                         Time.FirstClass -> list?.add(Time.FirstClass.getStringTime())
                         Time.SecondClass -> list?.add(Time.SecondClass.getStringTime())
@@ -156,7 +160,6 @@ class CabinetFragment : BaseFragment() {
                         Time.FifthClass -> list?.add(Time.FifthClass.getStringTime())
                         Time.SixthClass -> list?.add(Time.SixthClass.getStringTime())
                     }
-//                }
             }
         }
         return list
@@ -167,20 +170,6 @@ class CabinetFragment : BaseFragment() {
         adapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner_cabinet_free_time.adapter = adapter
     }
-
-    /*private fun setUpStatus(time: Time) {
-        when (arguments?.getParcelable<Cabinet>("cabinet")?.business?.get(time)) {
-            Status.Free -> {
-                iv_cabinet_status.background = rootActivity.resources
-                    .getDrawable(R.drawable.cabinet_status_free, null)
-            }
-            Status.Booked -> {
-                iv_cabinet_status.background = rootActivity.resources
-                    .getDrawable(R.drawable.cabinet_status_booked, null)
-
-            }
-        }
-    }*/
 
     private fun observeCabinetBookedLiveData() =
         viewModel.cabinetBookedLiveData.observe(viewLifecycleOwner, Observer {
