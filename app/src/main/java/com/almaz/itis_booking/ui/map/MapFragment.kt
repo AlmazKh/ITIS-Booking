@@ -95,21 +95,31 @@ class MapFragment : BaseFragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.with_filter_toolbar, menu)
+        inflater.inflate(R.menu.with_help_toolbar, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
-            R.id.filter -> {
-                showSnackbar("U go to filter SUCCESS")
+            R.id.btn_help -> {
+                rootActivity.navController.navigate(R.id.dialogHelpMap)
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        setToolbarElevation(0F)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        setToolbarElevation(4F)
+    }
+
     private fun getCurrentDate(): String {
-        val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.ROOT)
+        val sdf = SimpleDateFormat("dd.MM.yyyy", Locale.ROOT)
         return sdf.format(Date())
     }
 

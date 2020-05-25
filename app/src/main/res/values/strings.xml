@@ -13,9 +13,17 @@
     <string name="btn_text_enter_by_google">Sign in with Google</string>
     <string name="description_login_page_itis_booking">Login page ITIS-Booking</string>
     <string name="filter_item_btn_title">filter button</string>
+    <string name="help_item_btn_title">help button</string>
     <string name="default_cabinet_number">1301</string>
     <string name="cabinet_capacity_title">Вместимость:</string>
     <string name="add_filter_approve">Отфильтровать</string>
     <string name="clear_filter">Очистить фильтр</string>
+
+    <!--Map help dialog-->
+    <string name="map_help_title">Значение цветов</string>
+    <string name="map_help_description">Номера аудиторий принимают определенный цвет в зависимосимости от доступности для бронирования на данный момент времени</string>
+    <string name="map_help_free_text">Аудитория свободна</string>
+    <string name="map_help_booked_text">Аудитория занята</string>
+    <string name="map_help_lock_text">Аудитория недоступна для бронирования</string>
 
 </resources>

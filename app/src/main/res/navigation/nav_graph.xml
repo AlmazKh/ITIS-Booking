@@ -104,4 +104,10 @@
         tools:layout="@layout/fragment_profile">
 
     </fragment>
+
+    <dialog
+        android:id="@+id/dialogHelpMap"
+        android:name="com.almaz.itis_booking.ui.map.MapExplanationDialogFragment"
+        tools:layout="@layout/dialog_map_explanation"
+        android:label="dialog_help_map"/>
 </navigation>

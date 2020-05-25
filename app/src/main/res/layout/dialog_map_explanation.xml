@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/spacing_small_8"
+    android:paddingEnd="@dimen/spacing_small_8">
+
+    <TextView
+        android:id="@+id/tv_help_title"
+        style="@style/TitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal_16"
+        android:text="@string/map_help_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_help_description"
+        style="@style/BaseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal_16"
+        android:text="@string/map_help_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_help_title" />
+
+    <View
+        android:id="@+id/v_status_free"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="@dimen/spacing_normal_16"
+        android:background="@drawable/map_cabinet_free_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_help_description" />
+
+    <TextView
+        android:id="@+id/tv_status_free"
+        style="@style/BaseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_normal_16"
+        android:text="@string/map_help_free_text"
+        app:layout_constraintBottom_toBottomOf="@id/v_status_free"
+        app:layout_constraintStart_toEndOf="@id/v_status_free"
+        app:layout_constraintTop_toTopOf="@id/v_status_free" />
+
+    <View
+        android:id="@+id/v_status_booked"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="@dimen/spacing_normal_16"
+        android:background="@drawable/map_cabinet_booked_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_status_free" />
+
+    <TextView
+        android:id="@+id/tv_status_booked"
+        style="@style/BaseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_normal_16"
+        android:text="@string/map_help_booked_text"
+        app:layout_constraintBottom_toBottomOf="@id/v_status_booked"
+        app:layout_constraintStart_toEndOf="@id/v_status_booked"
+        app:layout_constraintTop_toTopOf="@id/v_status_booked" />
+
+    <View
+        android:id="@+id/v_status_lock"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="@dimen/spacing_normal_16"
+        android:layout_marginBottom="@dimen/spacing_normal_16"
+        android:background="@drawable/map_cabinet_lock_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_status_booked" />
+
+    <TextView
+        android:id="@+id/tv_status_lock"
+        style="@style/BaseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_normal_16"
+        android:text="@string/map_help_lock_text"
+        app:layout_constraintBottom_toBottomOf="@id/v_status_lock"
+        app:layout_constraintStart_toEndOf="@id/v_status_lock"
+        app:layout_constraintTop_toTopOf="@id/v_status_lock" />
+</androidx.constraintlayout.widget.ConstraintLayout>

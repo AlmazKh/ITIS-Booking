@@ -28,6 +28,10 @@ open class BaseFragment : Fragment() {
         rootActivity.tv_toolbar_title.text = title
     }
 
+    fun setToolbarElevation(elevation: Float) {
+        rootActivity.toolbar.elevation = elevation
+    }
+
     fun setToolbarLogoVisibility(logoVisibility: Int) {
         rootActivity.iv_toolbar_logo.visibility = logoVisibility
     }
