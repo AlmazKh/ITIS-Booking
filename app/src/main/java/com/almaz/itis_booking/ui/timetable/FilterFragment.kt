@@ -164,7 +164,11 @@ class FilterFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        tv_choose_date.text = "$dayOfMonth.${month + 1}.$year"
+        when(month) {
+            9 - 11 -> tv_choose_date.text = "$dayOfMonth.${month + 1}.$year"
+            else -> tv_choose_date.text = "$dayOfMonth.0${month + 1}.$year"
+        }
+
     }
 
     private fun makeQuery() {
