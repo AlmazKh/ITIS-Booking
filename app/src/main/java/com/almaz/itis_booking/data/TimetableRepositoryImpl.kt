@@ -249,6 +249,6 @@ class TimetableRepositoryImpl
                     return "Аудитория свободна в ${Time.valueOf(it.time).getStringTime()}"
                 }
         }
-        return "Аудитория забронирована, но ваш приоритет позволяет пребить бронь"
+        return "Аудитория забронирована, но ваш приоритет позволяет перебить бронь"
     }
 }

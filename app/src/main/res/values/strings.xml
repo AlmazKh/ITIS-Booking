@@ -24,6 +24,6 @@
     <string name="map_help_description">Номера аудиторий принимают определенный цвет в зависимосимости от доступности для бронирования на данный момент времени</string>
     <string name="map_help_free_text">Аудитория свободна</string>
     <string name="map_help_booked_text">Аудитория занята</string>
-    <string name="map_help_lock_text">Аудитория недоступна для бронирования</string>
+    <string name="map_help_lock_text">Бронирование недоступно</string>
 
 </resources>
