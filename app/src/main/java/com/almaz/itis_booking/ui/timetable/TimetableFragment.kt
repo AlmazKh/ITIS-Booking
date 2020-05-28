@@ -74,7 +74,9 @@ class TimetableFragment : BaseFragment() {
     private fun refreshTimetable() {
         if (viewModel.filterState.value == TimetableViewModel.FilterState.DISABLED) {
             viewModel.updateTimetable(getCurrentDate())
+            swipe_container.isRefreshing = true
         }
+        swipe_container.isRefreshing = false
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -104,6 +106,7 @@ class TimetableFragment : BaseFragment() {
             it?.let {
                 if (it == TimetableViewModel.FilterState.DISABLED) {
                     viewModel.updateTimetable(getCurrentDate())
+                    swipe_container.isRefreshing = true
                 }
             }
         })
@@ -114,6 +117,7 @@ class TimetableFragment : BaseFragment() {
                 if (it.data != null) {
                     timetableAdapter.submitList(it.data)
                     rv_timetable.adapter = timetableAdapter
+                    swipe_container.isRefreshing = false
                 }
                 if (it.error != null) {
                     showSnackbar(getString(R.string.snackbar_error_message))
