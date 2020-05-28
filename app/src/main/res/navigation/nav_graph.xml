@@ -53,11 +53,19 @@
         <action
             android:id="@+id/action_timetableFragment_to_cabinetFragment"
             app:destination="@id/cabinetFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/timetableFragment" />
 
         <action
             android:id="@+id/action_timetableFragment_to_filterFragment"
             app:destination="@id/filterFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/timetableFragment" />
     </fragment>
 
@@ -74,7 +82,11 @@
         <action
             android:id="@+id/action_cabinetFragment_to_timetableFragment"
             app:destination="@id/timetableFragment"
-            app:popUpTo="@id/timetableFragment" />
+            app:popUpTo="@id/timetableFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
 
     <fragment
@@ -86,7 +98,11 @@
         <action
             android:id="@+id/action_filterFragment_to_timetableFragment"
             app:destination="@id/timetableFragment"
-            app:popUpTo="@id/filterFragment" />
+            app:popUpTo="@id/filterFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
 
     <fragment
