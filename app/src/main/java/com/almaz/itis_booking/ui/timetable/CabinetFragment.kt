@@ -175,7 +175,7 @@ class CabinetFragment : BaseFragment() {
         viewModel.cabinetBookedLiveData.observe(viewLifecycleOwner, Observer {
             it?.let {
                 if (it) {
-                    showSnackbar("Booked")
+                    showSnackbar("Аудитория забронирована")
                     rootActivity.navController.navigate(R.id.action_cabinetFragment_to_timetableFragment)
                 } else {
                     showSnackbar(R.string.snackbar_error_message.toString())
