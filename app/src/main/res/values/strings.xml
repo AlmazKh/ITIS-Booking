@@ -27,4 +27,7 @@
     <string name="map_help_booked_text">Аудитория занята</string>
     <string name="map_help_lock_text">Бронирование недоступно</string>
 
+    <!--Profile priority help dialog-->
+    <string name="priority_help_title">Что такое приоритет?</string>
+    <string name="priority_help_description">Приоритет опредляет ваши возможности бронирования в случае, если вы не нашли подходящей аудиториии, но есть аудитории забронированные другими пользователями. Если ваш статус выше, участника забронировавшего аудиторию, то у вас есть возможность отбить бронь в свою пользу.</string>
 </resources>

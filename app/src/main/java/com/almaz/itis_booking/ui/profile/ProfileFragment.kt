@@ -10,7 +10,6 @@ import com.almaz.itis_booking.R
 import com.almaz.itis_booking.core.model.User
 import com.almaz.itis_booking.ui.base.BaseFragment
 import com.almaz.itis_booking.ui.main.MainViewModel
-import com.almaz.itis_booking.utils.AuthenticationState
 import com.almaz.itis_booking.utils.ViewModelFactory
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -48,6 +47,9 @@ class ProfileFragment : BaseFragment() {
             bottomNavVisibility = View.VISIBLE
         )
 
+        btn_priority_explanation.setOnClickListener {
+            rootActivity.navController.navigate(R.id.dialogHelpProfilePriority)
+        }
         viewModel.getUserInfo()
         observeUserInfoLiveData()
     }

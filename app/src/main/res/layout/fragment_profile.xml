@@ -133,6 +133,16 @@
         app:layout_constraintStart_toStartOf="@id/tv_priority_title"
         app:layout_constraintTop_toBottomOf="@id/tv_priority_title" />
 
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_priority_explanation"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="@dimen/spacing_normal_16"
+        android:background="@drawable/ic_help"
+        app:layout_constraintBottom_toBottomOf="@id/tv_priority_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_priority_title" />
+
     <View
         android:id="@+id/divider_priority_email"
         android:layout_width="match_parent"
