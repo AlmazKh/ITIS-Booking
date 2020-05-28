@@ -1,9 +1,9 @@
 package com.almaz.itis_booking.ui.main
 
 import androidx.lifecycle.MutableLiveData
-import com.almaz.itis_booking.core.interactors.LoginInteractor
 import com.almaz.itis_booking.core.interactors.MainInteractor
 import com.almaz.itis_booking.ui.base.BaseViewModel
+import com.almaz.itis_booking.utils.AuthenticationState
 import com.almaz.itis_booking.utils.Response
 import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
@@ -13,7 +13,11 @@ class MainViewModel
     private val mainInteractor: MainInteractor
 ) : BaseViewModel() {
 
-    val isLoginedLiveData = MutableLiveData<Response<Boolean>>()
+    val authenticationState  = MutableLiveData<AuthenticationState>()
+
+    init {
+        checkAuthUser()
+    }
 
     fun checkAuthUser() {
         disposables.add(
@@ -21,11 +25,25 @@ class MainViewModel
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     if (it) {
-                        isLoginedLiveData.value = Response.success(true)
+                        authenticationState.value = AuthenticationState.AUTHENTICATED
                     } else {
-                        isLoginedLiveData.value = Response.success(false)
+                        authenticationState.value = AuthenticationState.UNAUTHENTICATED
                     }
                 }, {
+                    it.printStackTrace()
+                    authenticationState.value = AuthenticationState.INVALID_AUTHENTICATION
+                })
+        )
+    }
+
+    fun logout() {
+        disposables.add(
+            mainInteractor.logout()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    authenticationState.value = AuthenticationState.UNAUTHENTICATED
+                }, {
+                    authenticationState.value = AuthenticationState.INVALID_AUTHENTICATION
                     it.printStackTrace()
                 })
         )

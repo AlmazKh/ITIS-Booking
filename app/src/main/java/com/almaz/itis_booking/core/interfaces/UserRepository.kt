@@ -13,4 +13,5 @@ interface UserRepository {
     fun getCurrentUserPriorityValue(): Single<Int>
     fun getUserBookings(userId: Int): Single<List<BusinessRemote>>
     fun cancelBooking(bookingId: Int): Completable
+    fun logout(): Completable
 }

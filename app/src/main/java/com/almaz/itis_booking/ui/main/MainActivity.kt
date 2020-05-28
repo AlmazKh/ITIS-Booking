@@ -9,6 +9,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.almaz.itis_booking.App
 import com.almaz.itis_booking.R
 import com.almaz.itis_booking.ui.base.BaseActivity
+import com.almaz.itis_booking.utils.AuthenticationState
 import com.almaz.itis_booking.utils.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -34,25 +35,26 @@ class MainActivity : BaseActivity() {
         viewModel = ViewModelProvider(this, this.viewModeFactory)
                 .get(MainViewModel::class.java)
 
-        viewModel.checkAuthUser()
-        observeIsLoginedLiveData()
+        observeAuthenticationState()
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp()
     }
 
-    private fun observeIsLoginedLiveData() =
-        viewModel.isLoginedLiveData.observe(this, Observer { response ->
-            if (response?.data != null) {
-                if (response.data) {
-                    try {
-                        navController.navigate(R.id.action_loginFragment_to_timetableFragment)
-                    } catch (ex: IllegalArgumentException) {
-                        navController.navigate(R.id.timetableFragment)
+    private fun observeAuthenticationState() =
+        viewModel.authenticationState.observe(this, Observer { authState ->
+            if (authState != null) {
+                when (authState) {
+                    AuthenticationState.UNAUTHENTICATED -> {
+                        navController.navigate(R.id.loginFragment)
                     }
-                } else {
-                    navController.navigate(R.id.loginFragment)
+                    AuthenticationState.AUTHENTICATED -> {
+                        navController.navigate(R.id.action_loginFragment_to_timetableFragment)
+                    }
+                    AuthenticationState.INVALID_AUTHENTICATION -> {
+                        navController.navigate(R.id.loginFragment)
+                    }
                 }
             }
         })

@@ -20,6 +20,11 @@ class UserRepositoryImpl
 
     override fun checkAuthUser(): Single<Boolean> = Single.just(firebaseAuth.currentUser != null)
 
+    override fun logout(): Completable {
+        firebaseAuth.signOut()
+        return Completable.complete()
+    }
+
     override fun loginWithGoogle(acct: GoogleSignInAccount): Completable {
         return Completable.create { emitter ->
             firebaseAuth.signInWithCredential(
